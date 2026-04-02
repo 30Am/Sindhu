@@ -24,31 +24,24 @@ export default function About() {
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-[3px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-full flex-shrink-0" />
               <span className="text-[10px] font-semibold text-[#002eff] tracking-[2.5px] uppercase">
-                ABOUT THE AUDITOR
+                BREAKDOWN BY SINDHU
               </span>
             </div>
 
             <h2 className="font-black text-[32px] sm:text-[40px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] mb-5 leading-tight">
-              Hi, I&apos;m Sindhu Biswal.
+              Decode your Instagram!
             </h2>
 
             <p className="text-[#555566] text-[15px] sm:text-[16px] leading-[26px] mb-5">
-              Founder &amp; CEO of Buzzlab. Growth Marketing Consultant for
-              Wakefit and Acko. Ex-FilterCopy (Pocket Aces) and PayTM Insider.
-              Fractional CMO for 12 consumer internet companies and 7 B2B SaaS
-              firms.
+              The consultant behind Raj Shamani&apos;s podcast growth. 500+ founders and creators have already done this with us and seen real results. Don&apos;t be the one who watches others grow while wondering what they&apos;re doing differently.
             </p>
 
             <p className="text-[#555566] text-[15px] sm:text-[16px] leading-[26px] mb-8">
-              At The Growth Project, we do heavy experiments with a growth
-              mindset — performance marketing, CRO, and brandformance.
-              We&apos;re founder-friendly and data-backed. I&apos;ve mentored
-              at Masters&apos; Union and am certified by Cannes Lions &amp;
-              Ogilvy UK.
+              I will decode your Instagram and YouTube to see exactly why you&apos;re not growing, what&apos;s bleeding reach, and what to fix first. This isn&apos;t a template checklist, it&apos;s 15 years of pattern recognition, certified by Cannes Lions &amp; Ogilvy UK, put to work on your account.
             </p>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3 sm:gap-4 mt-2">
               {tags.map((tag) =>
                 tag.gradient ? (
                   <span

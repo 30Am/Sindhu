@@ -94,7 +94,7 @@ export default function Hero() {
             </motion.div>
             <motion.div variants={itemSlideLeftVariants}>
               <p className="font-extrabold text-[12px] tracking-[4px] text-[#0a0a0a] mb-1 uppercase">
-                I AM
+                BREAKDOWN BY
               </p>
               <p className="font-black text-[72px] xl:text-[84px] leading-none tracking-[-2px] text-[#0a0a0a]">
                 SINDHU
@@ -186,7 +186,7 @@ export default function Hero() {
 
           <motion.div variants={itemSlideRightVariants}>
             <p className="font-extrabold text-[10px] tracking-[4px] text-[#0a0a0a] uppercase mb-0.5">
-              I AM
+              BREAKDOWN BY
             </p>
             <p className="font-black text-[48px] sm:text-[60px] leading-none tracking-[-2px] text-[#0a0a0a]">
               SINDHU

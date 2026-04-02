@@ -1,16 +1,16 @@
 const rows = [
-  { feature: "Profile & Bio Review",             basic: true,  advanced: true  },
-  { feature: "Content Strategy Assessment",      basic: true,  advanced: true  },
-  { feature: "Engagement Rate Analysis",         basic: true,  advanced: true  },
-  { feature: "Hashtag / Keyword Review",         basic: true,  advanced: true  },
-  { feature: "3 Quick-Win Recommendations",      basic: true,  advanced: true  },
-  { feature: "Deep-Dive Performance Analysis",   basic: false, advanced: true  },
-  { feature: "Competitor Benchmarking",          basic: false, advanced: true  },
-  { feature: "Audience Persona Breakdown",       basic: false, advanced: true  },
-  { feature: "Algorithm & Posting Plan",         basic: false, advanced: true  },
-  { feature: "30-Day Action Plan",               basic: false, advanced: true  },
-  { feature: "Loom Video Walkthrough",           basic: false, advanced: true  },
-  { feature: "Both Platforms (₹11,999)",         basic: false, advanced: true  },
+  { feature: "Profile & Bio Review", basic: true, advanced: true },
+  { feature: "Content Strategy Assessment", basic: true, advanced: true },
+  { feature: "Engagement Rate Analysis", basic: true, advanced: true },
+  { feature: "Hashtag / Keyword Review", basic: true, advanced: true },
+  { feature: "3 Quick-Win Recommendations", basic: true, advanced: true },
+  { feature: "Deep-Dive Performance Analysis", basic: false, advanced: true },
+  { feature: "Competitor Benchmarking", basic: false, advanced: true },
+  { feature: "Audience Persona Breakdown", basic: false, advanced: true },
+  { feature: "Algorithm & Posting Plan", basic: false, advanced: true },
+  { feature: "30-Day Action Plan", basic: false, advanced: true },
+  { feature: "Loom Video Walkthrough", basic: false, advanced: true },
+  { feature: "Both Platforms (₹11,999)", basic: false, advanced: true },
 ];
 
 export default function ComparisonTable() {
@@ -48,9 +48,8 @@ export default function ComparisonTable() {
           {rows.map((row, i) => (
             <div
               key={row.feature}
-              className={`grid grid-cols-[1fr_80px_100px] sm:grid-cols-[1fr_130px_160px] h-11 sm:h-12 items-center border-b border-[#e8e8f0] last:border-0 ${
-                i % 2 === 0 ? "bg-[#f8f8fe]" : "bg-white"
-              }`}
+              className={`grid grid-cols-[1fr_80px_100px] sm:grid-cols-[1fr_130px_160px] h-11 sm:h-12 items-center border-b border-[#e8e8f0] last:border-0 ${i % 2 === 0 ? "bg-[#f8f8fe]" : "bg-white"
+                }`}
             >
               <span className="text-[#0a0a0a] text-[12px] sm:text-[13px] px-4 sm:px-6 truncate pr-2">
                 {row.feature}

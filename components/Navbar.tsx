@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -12,9 +12,22 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-[0px_1px_0px_0px_rgba(0,0,0,0.06)]">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/70 backdrop-blur-xl shadow-[0_4px_24px_0_rgba(0,46,255,0.07)] border-b border-white/40"
+          : "bg-white/95 backdrop-blur-sm shadow-[0px_1px_0px_0px_rgba(0,0,0,0.06)]"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 h-[68px] flex items-center justify-between gap-6">
         {/* Logo */}
         <a
