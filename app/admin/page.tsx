@@ -2,9 +2,29 @@ import { supabaseAdmin } from "../../lib/supabase";
 
 export const revalidate = 0;
 
+type AuditRow = {
+  id?: string | number;
+  name?: string;
+  email?: string;
+  profile_url?: string;
+  tier?: string;
+  goal?: string;
+  challenges?: string;
+};
+
+type CustomRow = {
+  id?: string | number;
+  name?: string;
+  email?: string;
+  profile_url?: string;
+  budget?: number;
+  request?: string;
+  created_at?: string;
+};
+
 export default async function AdminDashboard() {
-  let audits: Record<string, unknown>[] = [];
-  let customRequests: Record<string, unknown>[] = [];
+  let audits: AuditRow[] = [];
+  let customRequests: CustomRow[] = [];
   let fetchError: string | null = null;
 
   try {
@@ -16,8 +36,8 @@ export default async function AdminDashboard() {
     if (auditsRes.error) fetchError = `Audits table: ${auditsRes.error.message}`;
     else if (customRes.error) fetchError = `CustomRequests table: ${customRes.error.message}`;
     else {
-      audits = (auditsRes.data ?? []) as Record<string, unknown>[];
-      customRequests = (customRes.data ?? []) as Record<string, unknown>[];
+      audits = (auditsRes.data ?? []) as AuditRow[];
+      customRequests = (customRes.data ?? []) as CustomRow[];
     }
   } catch (err: unknown) {
     fetchError = err instanceof Error ? err.message : "Unexpected server error.";
@@ -88,8 +108,8 @@ export default async function AdminDashboard() {
               </thead>
               <tbody className="divide-y divide-[#e8e8f0] text-[#0a0a0a]">
                 {recentAudits.map((audit, index) => (
-                  <tr key={(audit.id as string) ?? index} className="hover:bg-[#fcfcff] transition-colors group">
-                    <td className="px-6 py-5 font-mono text-[12px] text-[#a6a6b8]">#{audit.id || "N/A"}</td>
+                  <tr key={String(audit.id ?? index)} className="hover:bg-[#fcfcff] transition-colors group">
+                    <td className="px-6 py-5 font-mono text-[12px] text-[#a6a6b8]">#{audit.id ?? "N/A"}</td>
                     <td className="px-6 py-5 font-bold text-[#0a0a0a] group-hover:text-[#002eff] transition-colors">{audit.name}</td>
                     <td className="px-6 py-5 text-[#555566] text-[13px]">{audit.email}</td>
                     <td className="px-6 py-5">
@@ -108,7 +128,7 @@ export default async function AdminDashboard() {
                       </span>
                     </td>
                     <td className="px-6 py-5 capitalize font-semibold text-[#0a0a0a] text-[13px]">
-                      {audit.goal?.replace("-", " ")}
+                      {audit.goal?.replace("-", " ") ?? "—"}
                     </td>
                     <td className="px-6 py-5 max-w-[280px] truncate text-[#555566] text-[13px]" title={audit.challenges}>
                       {audit.challenges || "—"}
@@ -154,8 +174,8 @@ export default async function AdminDashboard() {
               </thead>
               <tbody className="divide-y divide-[#e8e8f0] text-[#0a0a0a]">
                 {recentCustom.map((row, index) => (
-                  <tr key={(row.id as string) ?? index} className="hover:bg-[#fcfcff] transition-colors group">
-                    <td className="px-6 py-5 font-mono text-[12px] text-[#a6a6b8]">#{row.id || "N/A"}</td>
+                  <tr key={String(row.id ?? index)} className="hover:bg-[#fcfcff] transition-colors group">
+                    <td className="px-6 py-5 font-mono text-[12px] text-[#a6a6b8]">#{row.id ?? "N/A"}</td>
                     <td className="px-6 py-5 font-bold text-[#0a0a0a] group-hover:text-[#7c3aed] transition-colors">{row.name}</td>
                     <td className="px-6 py-5 text-[#555566] text-[13px]">{row.email}</td>
                     <td className="px-6 py-5">
