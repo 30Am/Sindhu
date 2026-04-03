@@ -88,7 +88,7 @@ export default async function AdminDashboard() {
               </thead>
               <tbody className="divide-y divide-[#e8e8f0] text-[#0a0a0a]">
                 {recentAudits.map((audit, index) => (
-                  <tr key={audit.id || index} className="hover:bg-[#fcfcff] transition-colors group">
+                  <tr key={(audit.id as string) ?? index} className="hover:bg-[#fcfcff] transition-colors group">
                     <td className="px-6 py-5 font-mono text-[12px] text-[#a6a6b8]">#{audit.id || "N/A"}</td>
                     <td className="px-6 py-5 font-bold text-[#0a0a0a] group-hover:text-[#002eff] transition-colors">{audit.name}</td>
                     <td className="px-6 py-5 text-[#555566] text-[13px]">{audit.email}</td>
@@ -154,7 +154,7 @@ export default async function AdminDashboard() {
               </thead>
               <tbody className="divide-y divide-[#e8e8f0] text-[#0a0a0a]">
                 {recentCustom.map((row, index) => (
-                  <tr key={row.id || index} className="hover:bg-[#fcfcff] transition-colors group">
+                  <tr key={(row.id as string) ?? index} className="hover:bg-[#fcfcff] transition-colors group">
                     <td className="px-6 py-5 font-mono text-[12px] text-[#a6a6b8]">#{row.id || "N/A"}</td>
                     <td className="px-6 py-5 font-bold text-[#0a0a0a] group-hover:text-[#7c3aed] transition-colors">{row.name}</td>
                     <td className="px-6 py-5 text-[#555566] text-[13px]">{row.email}</td>
