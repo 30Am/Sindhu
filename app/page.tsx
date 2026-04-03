@@ -5,12 +5,12 @@ import AnimatedStats from "@/components/AnimatedStats";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
+import CustomRequest from "@/components/CustomRequest";
 import PortfolioCarousel from "@/components/PortfolioCarousel";
 import ComparisonTable from "@/components/ComparisonTable";
 import IntakeForm from "@/components/IntakeForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -25,11 +25,11 @@ export default function Home() {
         <About />
         <Services />
         <HowItWorks />
+        <CustomRequest />
         <ComparisonTable />
         <IntakeForm />
         <Testimonials />
         <FAQ />
-        <CTABanner />
       </main>
       <Footer />
     </>

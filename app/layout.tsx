@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className="bg-white text-[#0a0a0a]">{children}</body>
+      <body className="bg-white text-[#0a0a0a]" suppressHydrationWarning>{children}</body>
     </html>
   );
 }

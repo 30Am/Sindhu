@@ -15,7 +15,6 @@ const baseItems = [
   { id: 9, caption: "Analytics" },
 ];
 
-// 15 copies = 135 items. Enough to never hit the walls.
 const items = Array(15)
   .fill(baseItems)
   .flat()
@@ -31,14 +30,12 @@ export default function PortfolioCarousel() {
     const container = scrollRef.current;
     if (!container) return;
 
-    // --- 3D transform logic ---
     const applyTransforms = () => {
       const containerCenter = container.scrollLeft + container.clientWidth / 2;
       const cards = container.querySelectorAll<HTMLElement>(".carousel-card");
       cards.forEach((card) => {
         const cardCenter = card.offsetLeft + card.offsetWidth / 2;
         const distanceFromCenter = cardCenter - containerCenter;
-
         const cardWidth = card.offsetWidth + 32;
         const normalizedDistance = distanceFromCenter / cardWidth;
         const clamped = Math.max(-3.5, Math.min(3.5, normalizedDistance));
@@ -54,7 +51,6 @@ export default function PortfolioCarousel() {
       });
     };
 
-    // --- Infinite loop check ---
     const checkLoop = () => {
       const maxScroll = container.scrollWidth - container.clientWidth;
       if (container.scrollLeft < maxScroll * 0.15) {
@@ -64,7 +60,6 @@ export default function PortfolioCarousel() {
       }
     };
 
-    // --- Auto-scroll rAF loop ---
     const SPEED = 1.4;
     const tick = () => {
       if (!isInitializing.current && !isPaused.current) {
@@ -75,7 +70,6 @@ export default function PortfolioCarousel() {
       rafId.current = requestAnimationFrame(tick);
     };
 
-    // Jump to centre on mount, then start the loop
     requestAnimationFrame(() => {
       container.style.scrollBehavior = "auto";
       container.scrollLeft = (container.scrollWidth - container.clientWidth) / 2;
@@ -87,7 +81,6 @@ export default function PortfolioCarousel() {
     });
 
     window.addEventListener("resize", applyTransforms);
-
     return () => {
       if (rafId.current) cancelAnimationFrame(rafId.current);
       window.removeEventListener("resize", applyTransforms);
@@ -95,21 +88,22 @@ export default function PortfolioCarousel() {
   }, []);
 
   return (
-    <section className="bg-white py-10 sm:py-14 overflow-hidden">
-
-      {/* Carousel track — overflow hidden + pointer-events-none kills manual drag */}
+    /* overflow-x-hidden only — lets the hover scale breathe vertically */
+    <section className="bg-white pt-10 sm:pt-14 pb-6 overflow-x-hidden">
       <div
         ref={scrollRef}
-        className="flex overflow-x-hidden pb-12 pt-6 hide-scrollbar select-none"
+        className="flex overflow-x-hidden hide-scrollbar select-none"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
           gap: "32px",
           scrollBehavior: "auto",
           pointerEvents: "none",
+          /* generous vertical padding so scaled cards never clip */
+          paddingTop: "40px",
+          paddingBottom: "40px",
         }}
       >
-        {/* Left spacer so the first visible item can sit in the centre */}
         <div className="flex-shrink-0 w-[calc(50vw-150px)] sm:w-[calc(50vw-170px)] lg:w-[calc(50vw-190px)]" />
 
         {items.map((item) => (
@@ -120,35 +114,48 @@ export default function PortfolioCarousel() {
             onMouseEnter={() => { isPaused.current = true; }}
             onMouseLeave={() => { isPaused.current = false; }}
           >
-            {/* Card image — hover: enlarge + purple glow */}
-            <div className="carousel-img-wrap relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-xl bg-gradient-to-t from-[#e5e5f5] to-[#c7c2e5]">
-              <Image
-                src={`/carousel/${item.id}.png`}
-                alt={item.caption}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 360px"
-                quality={80}
-                loading="lazy"
-              />
+            {/*
+              Two-layer structure:
+              - outer .carousel-hover-wrap  → scales up on hover (no overflow-hidden, so nothing clips)
+              - inner .carousel-img-clip    → overflow-hidden + border-radius for clean edges
+            */}
+            <div className="carousel-hover-wrap w-full aspect-[4/5]">
+              <div className="carousel-img-clip relative w-full h-full rounded-[24px] overflow-hidden shadow-xl bg-gradient-to-t from-[#e5e5f5] to-[#c7c2e5]">
+                <Image
+                  src={`/carousel/${item.id}.png`}
+                  alt={item.caption}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 360px"
+                  quality={80}
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         ))}
 
-        {/* Right spacer — mirrors left */}
         <div className="flex-shrink-0 w-[calc(50vw-150px)] sm:w-[calc(50vw-170px)] lg:w-[calc(50vw-190px)]" />
       </div>
 
       <style dangerouslySetInnerHTML={{
         __html: `
           .hide-scrollbar::-webkit-scrollbar { display: none; }
-          .carousel-img-wrap {
-            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        box-shadow 0.35s ease;
+
+          /* Scale the outer wrapper — no overflow-hidden here so edges never clip */
+          .carousel-hover-wrap {
+            transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
           }
-          .carousel-card:hover .carousel-img-wrap {
-            transform: scale(1.07);
-            box-shadow: 0 20px 60px 0 rgba(124, 58, 237, 0.45);
+          .carousel-card:hover .carousel-hover-wrap {
+            transform: scale(1.06);
+          }
+
+          /* Shadow glow on the inner clip layer */
+          .carousel-img-clip {
+            transition: box-shadow 0.38s ease;
+          }
+          .carousel-card:hover .carousel-img-clip {
+            box-shadow: 0 24px 64px 0 rgba(124, 58, 237, 0.35), 0 4px 16px rgba(0,0,0,0.1);
           }
         `
       }} />

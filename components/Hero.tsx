@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
-const HERO_PHOTO =
-  "https://www.figma.com/api/mcp/asset/898806f1-82e3-43f7-9b0f-a17e7e83bc8b";
+const HERO_PHOTO = "/sindhu-hero.png";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -44,6 +43,24 @@ const itemSlideRightVariants: Variants = {
   },
 };
 
+const heyVariants: Variants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 0.35,
+    x: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
+const thereVariants: Variants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 0.35,
+    x: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
 const photoVariants: Variants = {
   hidden: { opacity: 0, y: 40, scale: 0.95 },
   visible: {
@@ -74,10 +91,10 @@ export default function Hero() {
       >
         {/* Hey / there */}
         <div className="flex justify-between items-start pt-8">
-          <motion.p variants={itemSlideLeftVariants} className="font-light italic text-[80px] xl:text-[96px] leading-none text-[#0a0a0a] opacity-50">
+          <motion.p variants={heyVariants} className="font-light italic text-[80px] xl:text-[96px] leading-none text-[#0a0a0a]">
             Hey,
           </motion.p>
-          <motion.p variants={itemSlideRightVariants} className="font-light italic text-[80px] xl:text-[96px] leading-none text-[#0a0a0a] opacity-50">
+          <motion.p variants={thereVariants} className="font-light italic text-[80px] xl:text-[96px] leading-none text-[#0a0a0a]">
             there
           </motion.p>
         </div>
@@ -136,7 +153,6 @@ export default function Hero() {
                 fill
                 className="object-cover object-top"
                 priority
-                unoptimized
               />
             </div>
           </motion.div>

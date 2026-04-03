@@ -1,3 +1,5 @@
+"use client";
+
 const testimonials = [
   {
     quote:
@@ -25,6 +27,50 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section id="testimonials" className="bg-white py-10 sm:py-16 lg:py-24">
+      <style>{`
+        @keyframes gradientShift {
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .testimonial-card {
+          transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                      box-shadow 0.3s ease,
+                      border-color 0.3s ease;
+        }
+        .testimonial-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          opacity: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(0, 46, 255, 0.04) 0%,
+            rgba(124, 58, 237, 0.06) 40%,
+            rgba(0, 46, 255, 0.03) 70%,
+            rgba(124, 58, 237, 0.05) 100%
+          );
+          background-size: 300% 300%;
+          transition: opacity 0.35s ease;
+          pointer-events: none;
+          z-index: 0;
+        }
+        .testimonial-card:hover::before {
+          opacity: 1;
+          animation: gradientShift 4s ease infinite;
+        }
+        .testimonial-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 40px rgba(0, 46, 255, 0.1), 0 4px 12px rgba(124, 58, 237, 0.08);
+          border-color: rgba(124, 58, 237, 0.25);
+        }
+        .testimonial-card > * {
+          position: relative;
+          z-index: 1;
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
         {/* Label */}
         <div className="flex flex-col items-center gap-3 mb-4">
@@ -42,10 +88,8 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_16px_0px_rgba(0,0,0,0.05)] p-6 relative overflow-hidden flex flex-col"
+              className="testimonial-card bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_16px_0px_rgba(0,0,0,0.05)] p-6 relative overflow-hidden flex flex-col"
             >
-              {/* Top gradient bar */}
-              <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#002eff] to-[#7c3aed]" />
 
               <p className="font-bold text-[14px] text-[#f5d84a] mb-3">★★★★★</p>
               <p className="text-[#555566] text-[14px] leading-[22px] flex-1 mb-6">

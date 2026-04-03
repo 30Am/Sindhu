@@ -46,34 +46,72 @@ export default function Services() {
         </div>
 
         <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] text-center mb-4 leading-tight">
-          Two Tiers. One Goal: Growth.
+          Sindhu&apos;s Proprietary Way of Auditing Growth
         </h2>
-        <p className="text-[#555566] text-[14px] sm:text-[16px] leading-[26px] text-center mb-8 max-w-[520px] mx-auto">
-          Pick the audit that matches where you are — both deliver real,
-          actionable insight.
+        <p className="text-[#555566] text-[14px] sm:text-[16px] leading-[26px] text-center mb-8 max-w-[560px] mx-auto">
+          A refined, experience-backed audit system designed to decode, diagnose,
+          and expand your digital presence with precision
         </p>
 
         {/* Platform Toggle */}
         <div className="flex items-center justify-center gap-2 mb-10 flex-wrap">
-          {(
-            [
-              { id: "instagram", label: "📸 Instagram" },
-              { id: "youtube",   label: "▶️ YouTube" },
-              { id: "both",      label: "🔥 Both Platforms" },
-            ] as { id: Platform; label: string }[]
-          ).map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setPlatform(tab.id)}
-              className={`h-10 sm:h-11 px-4 sm:px-6 rounded-full text-[12px] sm:text-[13px] font-semibold transition-all cursor-pointer ${
-                platform === tab.id
-                  ? "bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white shadow-md"
-                  : "bg-white border border-[#e8e8f0] text-[#0a0a0a] hover:border-[#002eff]"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+          {/* Instagram */}
+          <button
+            onClick={() => setPlatform("instagram")}
+            className={`h-10 sm:h-11 px-4 sm:px-6 rounded-full text-[12px] sm:text-[13px] font-semibold transition-all cursor-pointer flex items-center gap-2 ${
+              platform === "instagram"
+                ? "bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white shadow-md"
+                : "bg-white border border-[#e8e8f0] text-[#0a0a0a] hover:border-[#002eff]"
+            }`}
+          >
+            <span className="w-[26px] h-[26px] rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden relative"
+              style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(6px)", boxShadow: "inset 0 1px 1px rgba(255,255,255,0.5), 0 2px 8px rgba(0,0,0,0.12)" }}>
+              <img src="/instagram.avif" alt="Instagram" width={26} height={26} className="rounded-lg" />
+              <span className="absolute inset-0 rounded-lg" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 60%)", pointerEvents: "none" }} />
+            </span>
+            Instagram
+          </button>
+
+          {/* YouTube */}
+          <button
+            onClick={() => setPlatform("youtube")}
+            className={`h-10 sm:h-11 px-4 sm:px-6 rounded-full text-[12px] sm:text-[13px] font-semibold transition-all cursor-pointer flex items-center gap-2 ${
+              platform === "youtube"
+                ? "bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white shadow-md"
+                : "bg-white border border-[#e8e8f0] text-[#0a0a0a] hover:border-[#002eff]"
+            }`}
+          >
+            <span className="w-[26px] h-[26px] rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden relative"
+              style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(6px)", boxShadow: "inset 0 1px 1px rgba(255,255,255,0.5), 0 2px 8px rgba(0,0,0,0.12)" }}>
+              <img src="/youtube.svg" alt="YouTube" width={22} height={22} />
+              <span className="absolute inset-0 rounded-lg" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 60%)", pointerEvents: "none" }} />
+            </span>
+            YouTube
+          </button>
+
+          {/* Both Platforms */}
+          <button
+            onClick={() => setPlatform("both")}
+            className={`h-10 sm:h-11 px-4 sm:px-6 rounded-full text-[12px] sm:text-[13px] font-semibold transition-all cursor-pointer flex items-center gap-2 ${
+              platform === "both"
+                ? "bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white shadow-md"
+                : "bg-white border border-[#e8e8f0] text-[#0a0a0a] hover:border-[#002eff]"
+            }`}
+          >
+            <span className="flex items-center gap-1 flex-shrink-0">
+              <span className="w-[22px] h-[22px] rounded-md flex items-center justify-center overflow-hidden relative"
+                style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(6px)", boxShadow: "inset 0 1px 1px rgba(255,255,255,0.5), 0 2px 6px rgba(0,0,0,0.1)" }}>
+                <img src="/instagram.avif" alt="Instagram" width={22} height={22} className="rounded-md" />
+                <span className="absolute inset-0 rounded-md" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 60%)", pointerEvents: "none" }} />
+              </span>
+              <span className="w-[22px] h-[22px] rounded-md flex items-center justify-center overflow-hidden relative"
+                style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(6px)", boxShadow: "inset 0 1px 1px rgba(255,255,255,0.5), 0 2px 6px rgba(0,0,0,0.1)" }}>
+                <img src="/youtube.svg" alt="YouTube" width={19} height={19} />
+                <span className="absolute inset-0 rounded-md" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 60%)", pointerEvents: "none" }} />
+              </span>
+            </span>
+            Both Platforms
+          </button>
         </div>
 
         {/* Cards */}

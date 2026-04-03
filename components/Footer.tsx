@@ -1,13 +1,11 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0f] pt-8 pb-5">
-      <div className="h-[2px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] mb-8 sm:mb-8" />
-
+    <footer className="bg-[#0a0a0f] pt-10 pb-5">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
         {/* Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
 
-          {/* Brand — full width on mobile */}
+          {/* Brand */}
           <div className="col-span-2 sm:col-span-2 lg:col-span-1">
             <p className="font-black text-[14px] sm:text-[15px] text-white tracking-[3px] uppercase mb-2">
               SINDHU BISWAL
@@ -15,16 +13,33 @@ export default function Footer() {
             <p className="text-[12px] sm:text-[13px] text-[#737394] mb-5 leading-[20px]">
               Growth Marketing Expert · Founder, Buzzlab
             </p>
-            <div className="flex gap-2 flex-wrap">
-              {["LinkedIn", "Topmate", "Instagram"].map((p) => (
-                <a
-                  key={p}
-                  href="#"
-                  className="bg-[#1a1a26] border border-[#33334d] rounded-lg h-7 px-3 flex items-center text-[11px] font-medium text-[#8c8cad] hover:text-white hover:border-[#555577] transition-colors"
-                >
-                  {p}
-                </a>
-              ))}
+            <div className="flex gap-3">
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/sindhu.biswal/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-xl bg-[#1a1a26] border border-[#33334d] flex items-center justify-center hover:border-[#555577] transition-colors group"
+              >
+                <img src="/instagram.avif" alt="Instagram" width={22} height={22} className="rounded-md opacity-80 group-hover:opacity-100 transition-opacity" />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/sindhubiswal/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-9 h-9 rounded-xl bg-[#1a1a26] border border-[#33334d] flex items-center justify-center hover:border-[#555577] transition-colors group"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80 group-hover:opacity-100 transition-opacity">
+                  <rect width="24" height="24" rx="4" fill="#0A66C2"/>
+                  <path d="M7.75 9.5H5.25V18.5H7.75V9.5Z" fill="white"/>
+                  <circle cx="6.5" cy="6.75" r="1.5" fill="white"/>
+                  <path d="M18.75 18.5H16.25V13.75C16.25 12.5 15.5 11.75 14.5 11.75C13.5 11.75 12.75 12.5 12.75 13.75V18.5H10.25V9.5H12.75V10.75C13.25 9.75 14.25 9.25 15.5 9.25C17.25 9.25 18.75 10.75 18.75 13V18.5Z" fill="white"/>
+                </svg>
+              </a>
             </div>
           </div>
 
