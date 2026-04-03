@@ -1,16 +1,19 @@
 const rows = [
-  { feature: "Profile & Bio Review", basic: true, advanced: true },
-  { feature: "Content Strategy Assessment", basic: true, advanced: true },
-  { feature: "Engagement Rate Analysis", basic: true, advanced: true },
-  { feature: "Hashtag / Keyword Review", basic: true, advanced: true },
-  { feature: "3 Quick-Win Recommendations", basic: true, advanced: true },
-  { feature: "Deep-Dive Performance Analysis", basic: false, advanced: true },
-  { feature: "Competitor Benchmarking", basic: false, advanced: true },
-  { feature: "Audience Persona Breakdown", basic: false, advanced: true },
-  { feature: "Algorithm & Posting Plan", basic: false, advanced: true },
-  { feature: "30-Day Action Plan", basic: false, advanced: true },
-  { feature: "Loom Video Walkthrough", basic: false, advanced: true },
-  { feature: "Both Platforms (₹11,999)", basic: false, advanced: true },
+  { feature: "Positioning Clarity and Niche Ownership", basic: true, advanced: true },
+  { feature: "First Impression Audit of Profile", basic: true, advanced: true },
+  { feature: "Content Pillar Architecture", basic: true, advanced: true },
+  { feature: "Audience-Content Fit", basic: true, advanced: true },
+  { feature: "Engagement Quality and Depth", basic: true, advanced: true },
+  { feature: "Follower Growth Trajectory and Inflection Points", basic: true, advanced: true },
+  { feature: "Content Format Portfolio", basic: true, advanced: true },
+  { feature: "Posting Cadence and Consistency", basic: true, advanced: true },
+  { feature: "Hook and Retention Architecture", basic: true, advanced: true },
+  { feature: "Storytelling and Personal Brand Narrative", basic: false, advanced: true },
+  { feature: "Monetization Alignment and Funnel Architecture", basic: false, advanced: true },
+  { feature: "Competitive Benchmarking and Differentiation", basic: false, advanced: true },
+  { feature: "Brand Aesthetic and Visual Consistency", basic: false, advanced: true },
+  { feature: "Strategic Trajectory and Growth Ceiling Diagnosis", basic: false, advanced: true },
+  { feature: "1-Hour Consulting Call", basic: false, advanced: true },
 ];
 
 export default function ComparisonTable() {
@@ -37,10 +40,10 @@ export default function ComparisonTable() {
               Feature
             </span>
             <span className="text-white text-[11px] sm:text-[13px] font-bold text-center">
-              Basic
+              Basic ₹2,999
             </span>
             <span className="text-[#b2b2f2] text-[11px] sm:text-[13px] font-bold text-center px-2">
-              Advanced
+              Advanced ₹6,999+
             </span>
           </div>
 

@@ -5,23 +5,23 @@ import { useState } from "react";
 type Platform = "instagram" | "youtube" | "both";
 
 const basicFeatures = [
-  "Profile & bio optimization review",
-  "Content strategy assessment (30 posts)",
-  "Engagement rate benchmarking",
-  "Hashtag & keyword strategy",
-  "3 quick-win recommendations",
-  "PDF report via email",
-  "Delivered in 5 business days",
+  "Positioning Clarity and Niche Ownership",
+  "First Impression Audit of Profile",
+  "Content Pillar Architecture",
+  "Finding your Audience-Content Fit",
+  "Engagement Quality and Depth",
+  "Follower Growth Trajectory and Inflection Points",
+  "Content Format Portfolio",
 ];
 
 const advancedFeatures = [
-  "Everything in Basic Audit",
-  "Deep-dive performance analysis",
-  "Competitor benchmarking (3 brands)",
-  "Audience persona breakdown",
-  "Algorithm & posting cadence plan",
-  "Monetization & growth opportunities",
-  "30-day prioritized action plan",
+  "Hook and Retention Architecture",
+  "Storytelling and Personal Brand Narrative",
+  "Monetisation Alignment and Funnel Architecture",
+  "Competitive Benchmarking and Differentiation",
+  "Strategic Trajectory and Growth Ceiling Diagnosis",
+  "Brand Aesthetic and Visual Consistency",
+  "1-Hour Consulting Call",
 ];
 
 const prices: Record<Platform, { basic: string; advanced: string; advancedSub: string }> = {
@@ -118,7 +118,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
 
           {/* Basic Card */}
-          <div className="bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_20px_0px_rgba(0,0,0,0.05)] p-6 sm:p-8 flex flex-col">
+          <div className="bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_20px_0px_rgba(0,0,0,0.05)] p-6 sm:p-8 flex flex-col transition-all duration-300 hover:scale-[1.03] hover:shadow-[0px_8px_40px_0px_rgba(124,58,237,0.15)] hover:bg-[#f5f3ff] hover:border-[#c4b5fd]">
             <div className="mb-auto">
               <p className="text-[10px] font-semibold text-[#8c8ca6] tracking-[2px] uppercase mb-2">
                 TIER 1
@@ -142,14 +142,15 @@ export default function Services() {
             </div>
             <a
               href="#book"
-              className="mt-7 flex items-center justify-center w-full h-12 rounded-full border-[1.5px] border-[#002eff] text-[#002eff] text-[14px] font-semibold hover:bg-blue-50 transition-colors"
+              className="mt-7 flex items-center justify-center w-full h-12 rounded-full border-[1.5px] border-[#002eff] text-[#002eff] text-[14px] font-semibold relative overflow-hidden group transition-all duration-300 hover:text-white hover:border-transparent hover:shadow-[0px_4px_20px_0px_rgba(0,46,255,0.4)] active:scale-95"
             >
-              Get Basic Audit →
+              <span className="absolute inset-0 bg-gradient-to-r from-[#002eff] to-[#7c3aed] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative">Get Basic Audit →</span>
             </a>
           </div>
 
           {/* Advanced Card */}
-          <div className="bg-[#0a0a0a] rounded-2xl shadow-[0px_16px_40px_0px_rgba(0,46,255,0.18)] p-6 sm:p-8 relative flex flex-col">
+          <div className="bg-[#0a0a0a] rounded-2xl shadow-[0px_16px_40px_0px_rgba(0,46,255,0.18)] p-6 sm:p-8 relative flex flex-col transition-all duration-300 hover:scale-[1.03] hover:shadow-[0px_24px_60px_0px_rgba(124,58,237,0.35)] hover:bg-[#110d1f]">
             {/* Most Popular badge */}
             <div className="absolute top-6 right-6 bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[10px] font-semibold tracking-[0.5px] px-3 h-7 rounded-full flex items-center">
               ⭐ MOST POPULAR
@@ -181,9 +182,10 @@ export default function Services() {
             </div>
             <a
               href="#book"
-              className="mt-7 flex items-center justify-center w-full h-12 rounded-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[14px] font-semibold hover:opacity-90 transition-opacity"
+              className="mt-7 flex items-center justify-center w-full h-12 rounded-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[14px] font-semibold relative overflow-hidden group transition-all duration-300 hover:shadow-[0px_6px_24px_0px_rgba(124,58,237,0.5)] active:scale-95"
             >
-              Get Advanced Audit →
+              <span className="absolute inset-0 bg-gradient-to-r from-[#7c3aed] to-[#002eff] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative">Get Advanced Audit →</span>
             </a>
           </div>
 

@@ -100,7 +100,7 @@ export default function IntakeForm() {
         onClick={closeForm} 
         aria-label="Close modal"
       />
-      <div className="bg-white rounded-2xl sm:rounded-[28px] shadow-[0px_24px_64px_0px_rgba(0,46,255,0.2)] w-full max-w-[560px] max-h-[90vh] overflow-y-auto px-6 sm:px-10 pt-10 sm:pt-12 pb-8 sm:pb-10 relative z-10">
+      <div className="bg-white rounded-2xl sm:rounded-[28px] shadow-[0px_24px_64px_0px_rgba(0,46,255,0.2)] w-full max-w-[560px] max-h-[90vh] overflow-y-hidden px-6 sm:px-10 pt-10 sm:pt-12 pb-8 sm:pb-10 relative z-10">
         <button 
           onClick={closeForm}
           className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 flex items-center justify-center rounded-full bg-[#f5f5fc] text-[#555566] hover:bg-[#e8e8f0] transition-colors"
@@ -108,9 +108,6 @@ export default function IntakeForm() {
         >
           ✕
         </button>
-        {/* Top accent bar */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-t-2xl sm:rounded-t-[28px]" />
-
           <h2 className="font-black text-[20px] sm:text-[22px] text-[#0a0a0a] mb-1.5">
             📋 Book Your Audit
           </h2>
