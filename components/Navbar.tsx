@@ -13,9 +13,16 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 10);
+      setHidden(currentY > lastY && currentY > 80);
+      lastY = currentY;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -26,7 +33,7 @@ export default function Navbar() {
         scrolled
           ? "bg-white/70 backdrop-blur-xl shadow-[0_4px_24px_0_rgba(0,46,255,0.07)] border-b border-white/40"
           : "bg-white/95 backdrop-blur-sm shadow-[0px_1px_0px_0px_rgba(0,0,0,0.06)]"
-      }`}
+      } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 h-[68px] flex items-center justify-between gap-6">
         {/* Logo */}
