@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type Platform = "instagram" | "youtube" | "both";
 
@@ -115,10 +115,47 @@ export default function Services() {
         </div>
 
         {/* Cards */}
+        <CardsSection prices={prices} platform={platform} basicFeatures={basicFeatures} advancedFeatures={advancedFeatures} />
+      </div>
+    </section>
+  );
+}
+
+function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
+  prices: Record<string, { basic: string; advanced: string; advancedSub: string }>;
+  platform: string;
+  basicFeatures: string[];
+  advancedFeatures: string[];
+}) {
+  const basicRef = useRef<HTMLDivElement>(null);
+  const advancedRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const els = [basicRef.current, advancedRef.current];
+    els.forEach((el, i) => {
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0) scale(1)";
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(el);
+    });
+  }, []);
+
+  return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
 
           {/* Basic Card */}
-          <div className="bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_20px_0px_rgba(0,0,0,0.05)] p-6 sm:p-8 flex flex-col transition-all duration-300 hover:scale-[1.03] hover:shadow-[0px_8px_40px_0px_rgba(124,58,237,0.15)] hover:bg-[#f5f3ff] hover:border-[#c4b5fd]">
+          <div
+            ref={basicRef}
+            style={{ opacity: 0, transform: "translateY(36px) scale(0.97)", transition: "opacity 0.55s ease 0s, transform 0.55s cubic-bezier(0.34,1.2,0.64,1) 0s, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease" }}
+            className="bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_20px_0px_rgba(0,0,0,0.05)] p-6 sm:p-8 flex flex-col hover:scale-[1.03] hover:shadow-[0px_8px_40px_0px_rgba(124,58,237,0.15)] hover:bg-[#f5f3ff] hover:border-[#c4b5fd] active:scale-[1.02] active:shadow-[0px_8px_32px_0px_rgba(124,58,237,0.2)] active:bg-[#f5f3ff] active:border-[#c4b5fd]">
             <div className="mb-auto">
               <p className="text-[10px] font-semibold text-[#8c8ca6] tracking-[2px] uppercase mb-2">
                 TIER 1
@@ -142,15 +179,18 @@ export default function Services() {
             </div>
             <a
               href="#book"
-              className="mt-7 flex items-center justify-center w-full h-12 rounded-full border-[1.5px] border-[#002eff] text-[#002eff] text-[14px] font-semibold relative overflow-hidden group transition-all duration-300 hover:text-white hover:border-transparent hover:shadow-[0px_4px_20px_0px_rgba(0,46,255,0.4)] active:scale-95"
+              className="mt-7 flex items-center justify-center w-full h-12 rounded-full border-[1.5px] border-[#002eff] text-[#002eff] text-[14px] font-semibold relative overflow-hidden group transition-all duration-300 hover:text-white hover:border-transparent hover:shadow-[0px_4px_20px_0px_rgba(0,46,255,0.4)] active:text-white active:border-transparent active:scale-95"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#002eff] to-[#7c3aed] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="absolute inset-0 bg-gradient-to-r from-[#002eff] to-[#7c3aed] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300" />
               <span className="relative">Get Basic Audit →</span>
             </a>
           </div>
 
           {/* Advanced Card */}
-          <div className="bg-[#0a0a0a] rounded-2xl shadow-[0px_16px_40px_0px_rgba(0,46,255,0.18)] p-6 sm:p-8 relative flex flex-col transition-all duration-300 hover:scale-[1.03] hover:shadow-[0px_24px_60px_0px_rgba(124,58,237,0.35)] hover:bg-[#110d1f]">
+          <div
+            ref={advancedRef}
+            style={{ opacity: 0, transform: "translateY(36px) scale(0.97)", transition: "opacity 0.55s ease 0.1s, transform 0.55s cubic-bezier(0.34,1.2,0.64,1) 0.1s, box-shadow 0.3s ease, background-color 0.3s ease" }}
+            className="bg-[#0a0a0a] rounded-2xl shadow-[0px_16px_40px_0px_rgba(0,46,255,0.18)] p-6 sm:p-8 relative flex flex-col hover:scale-[1.03] hover:shadow-[0px_24px_60px_0px_rgba(124,58,237,0.35)] hover:bg-[#110d1f] active:scale-[1.02] active:shadow-[0px_20px_50px_0px_rgba(124,58,237,0.4)] active:bg-[#110d1f]">
             {/* Most Popular badge */}
             <div className="absolute top-6 right-6 bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[10px] font-semibold tracking-[0.5px] px-3 h-7 rounded-full flex items-center">
               ⭐ MOST POPULAR
@@ -182,15 +222,13 @@ export default function Services() {
             </div>
             <a
               href="#book"
-              className="mt-7 flex items-center justify-center w-full h-12 rounded-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[14px] font-semibold relative overflow-hidden group transition-all duration-300 hover:shadow-[0px_6px_24px_0px_rgba(124,58,237,0.5)] active:scale-95"
+              className="mt-7 flex items-center justify-center w-full h-12 rounded-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[14px] font-semibold relative overflow-hidden group transition-all duration-300 hover:shadow-[0px_6px_24px_0px_rgba(124,58,237,0.5)] active:shadow-[0px_6px_24px_0px_rgba(124,58,237,0.5)] active:scale-95"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#7c3aed] to-[#002eff] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="absolute inset-0 bg-gradient-to-r from-[#7c3aed] to-[#002eff] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500" />
               <span className="relative">Get Advanced Audit →</span>
             </a>
           </div>
 
         </div>
-      </div>
-    </section>
   );
 }

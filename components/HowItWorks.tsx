@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 const steps = [
   {
     num: "01",
@@ -42,18 +46,44 @@ const steps = [
   },
 ];
 
-function StepCard({ step }: { step: (typeof steps)[number] }) {
+function StepCard({ step, index }: { step: (typeof steps)[number]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
-      className={`group border rounded-2xl p-6 h-full transition-all duration-300 ease-out cursor-default
+      ref={ref}
+      style={{
+        opacity: 0,
+        transform: "translateY(32px)",
+        transition: `opacity 0.55s ease ${index * 0.08}s, transform 0.55s cubic-bezier(0.34,1.2,0.64,1) ${index * 0.08}s, box-shadow 0.3s ease, border-color 0.3s ease`,
+      }}
+      className={`group border rounded-2xl p-6 h-full cursor-default
         hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(0,46,255,0.15)]
+        active:scale-[1.02] active:shadow-[0_8px_24px_rgba(124,58,237,0.25)]
         ${
           step.isAdvanced
-            ? "bg-gradient-to-br from-[rgba(124,58,237,0.18)] to-[rgba(0,46,255,0.12)] border-[rgba(124,58,237,0.35)] hover:from-[rgba(124,58,237,0.32)] hover:to-[rgba(0,46,255,0.22)] hover:border-[rgba(124,58,237,0.6)]"
-            : "bg-gradient-to-br from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.03)] border-[rgba(255,255,255,0.1)] hover:from-[rgba(0,46,255,0.14)] hover:to-[rgba(124,58,237,0.08)] hover:border-[rgba(100,100,220,0.3)]"
+            ? "bg-gradient-to-br from-[rgba(124,58,237,0.18)] to-[rgba(0,46,255,0.12)] border-[rgba(124,58,237,0.35)] hover:from-[rgba(124,58,237,0.32)] hover:to-[rgba(0,46,255,0.22)] hover:border-[rgba(124,58,237,0.6)] active:from-[rgba(124,58,237,0.32)] active:to-[rgba(0,46,255,0.22)] active:border-[rgba(124,58,237,0.6)]"
+            : "bg-gradient-to-br from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.03)] border-[rgba(255,255,255,0.1)] hover:from-[rgba(0,46,255,0.14)] hover:to-[rgba(124,58,237,0.08)] hover:border-[rgba(100,100,220,0.3)] active:from-[rgba(0,46,255,0.14)] active:to-[rgba(124,58,237,0.08)] active:border-[rgba(100,100,220,0.3)]"
         }`}
     >
-      <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-[#002eff] to-[#7c3aed] flex items-center justify-center mb-5 transition-all duration-300 group-hover:from-[#7c3aed] group-hover:to-[#002eff] group-hover:shadow-[0_0_16px_rgba(124,58,237,0.5)]">
+      <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-[#002eff] to-[#7c3aed] flex items-center justify-center mb-5 transition-all duration-300 group-hover:from-[#7c3aed] group-hover:to-[#002eff] group-hover:shadow-[0_0_16px_rgba(124,58,237,0.5)] group-active:from-[#7c3aed] group-active:to-[#002eff] group-active:shadow-[0_0_16px_rgba(124,58,237,0.5)]">
         <span className="font-black text-[15px] text-white">{step.num}</span>
       </div>
       <h3 className="font-bold text-[15px] sm:text-[16px] text-white mb-2">{step.title}</h3>
@@ -83,13 +113,13 @@ function Arrow() {
   );
 }
 
-function StepRow({ rowSteps }: { rowSteps: (typeof steps)[number][] }) {
+function StepRow({ rowSteps, offset }: { rowSteps: (typeof steps)[number][]; offset: number }) {
   return (
     <div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:items-stretch gap-4 lg:gap-0">
       {rowSteps.map((step, i) => (
         <div key={step.num} className="flex lg:flex-row lg:items-stretch flex-1">
           <div className="flex-1">
-            <StepCard step={step} />
+            <StepCard step={step} index={offset + i} />
           </div>
           {i < rowSteps.length - 1 && <Arrow />}
         </div>
@@ -105,7 +135,6 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="bg-[#0a0a0a] py-10 sm:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
-        {/* Label */}
         <p className="text-[10px] font-semibold text-[#8080e5] tracking-[2.5px] uppercase text-center mb-3">
           HOW IT WORKS
         </p>
@@ -114,8 +143,8 @@ export default function HowItWorks() {
         </h2>
 
         <div className="flex flex-col gap-4">
-          <StepRow rowSteps={row1} />
-          <StepRow rowSteps={row2} />
+          <StepRow rowSteps={row1} offset={0} />
+          <StepRow rowSteps={row2} offset={4} />
         </div>
       </div>
     </section>

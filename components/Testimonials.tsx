@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 const testimonials = [
   {
     quote:
@@ -28,7 +30,6 @@ const testimonials = [
     name: "Kritika",
     handle: "18th Jan, 2026",
     initials: "K",
-    rating: 5,
   },
   {
     quote:
@@ -36,7 +37,6 @@ const testimonials = [
     name: "Manav Jindal",
     handle: "20th Jan, 2026",
     initials: "MJ",
-    rating: 5,
   },
   {
     quote:
@@ -44,9 +44,57 @@ const testimonials = [
     name: "Shreya",
     handle: "20th Jan, 2026",
     initials: "S",
-    rating: 5,
   },
 ];
+
+function TestimonialCard({ t, index }: { t: (typeof testimonials)[number]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0) scale(1)";
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: 0,
+        transform: "translateY(36px) scale(0.97)",
+        transition: `opacity 0.55s ease ${index * 0.1}s, transform 0.55s cubic-bezier(0.34,1.2,0.64,1) ${index * 0.1}s`,
+      }}
+      className="testimonial-card bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_16px_0px_rgba(0,0,0,0.05)] p-6 relative overflow-hidden flex flex-col
+        active:scale-[0.98] active:shadow-[0_16px_40px_rgba(0,46,255,0.1),0_4px_12px_rgba(124,58,237,0.08)] active:border-[rgba(124,58,237,0.25)]"
+    >
+      <p className="font-bold text-[14px] text-[#f5d84a] mb-3">★★★★★</p>
+      <p className="text-[#555566] text-[14px] leading-[22px] flex-1 mb-6">
+        &ldquo;{t.quote}&rdquo;
+      </p>
+
+      <div className="flex items-center gap-3 mt-auto">
+        <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0">
+          {t.initials}
+        </div>
+        <div>
+          <p className="font-semibold text-[13px] text-[#0a0a0a]">{t.name}</p>
+          <p className="text-[11px] text-[#555566]">{t.handle}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Testimonials() {
   return (
@@ -70,24 +118,30 @@ export default function Testimonials() {
           opacity: 0;
           background: linear-gradient(
             135deg,
-            rgba(0, 46, 255, 0.04) 0%,
-            rgba(124, 58, 237, 0.06) 40%,
-            rgba(0, 46, 255, 0.03) 70%,
-            rgba(124, 58, 237, 0.05) 100%
+            rgba(0,46,255,0.04) 0%,
+            rgba(124,58,237,0.06) 40%,
+            rgba(0,46,255,0.03) 70%,
+            rgba(124,58,237,0.05) 100%
           );
           background-size: 300% 300%;
           transition: opacity 0.35s ease;
           pointer-events: none;
           z-index: 0;
         }
-        .testimonial-card:hover::before {
+        .testimonial-card:hover::before,
+        .testimonial-card:active::before {
           opacity: 1;
           animation: gradientShift 4s ease infinite;
         }
         .testimonial-card:hover {
           transform: translateY(-6px);
-          box-shadow: 0 16px 40px rgba(0, 46, 255, 0.1), 0 4px 12px rgba(124, 58, 237, 0.08);
-          border-color: rgba(124, 58, 237, 0.25);
+          box-shadow: 0 16px 40px rgba(0,46,255,0.1), 0 4px 12px rgba(124,58,237,0.08);
+          border-color: rgba(124,58,237,0.25);
+        }
+        .testimonial-card:active {
+          transform: translateY(-3px) scale(0.98);
+          box-shadow: 0 16px 40px rgba(0,46,255,0.1), 0 4px 12px rgba(124,58,237,0.08);
+          border-color: rgba(124,58,237,0.25);
         }
         .testimonial-card > * {
           position: relative;
@@ -96,7 +150,6 @@ export default function Testimonials() {
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
-        {/* Label */}
         <div className="flex flex-col items-center gap-3 mb-4">
           <div className="w-10 h-[3px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-full" />
           <span className="text-[10px] font-semibold text-[#002eff] tracking-[2.5px] uppercase">
@@ -109,29 +162,8 @@ export default function Testimonials() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="testimonial-card bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_16px_0px_rgba(0,0,0,0.05)] p-6 relative overflow-hidden flex flex-col"
-            >
-
-              <p className="font-bold text-[14px] text-[#f5d84a] mb-3">★★★★★</p>
-              <p className="text-[#555566] text-[14px] leading-[22px] flex-1 mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-
-              <div className="flex items-center gap-3 mt-auto">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0">
-                  {t.initials}
-                </div>
-                <div>
-                  <p className="font-semibold text-[13px] text-[#0a0a0a]">
-                    {t.name}
-                  </p>
-                  <p className="text-[11px] text-[#555566]">{t.handle}</p>
-                </div>
-              </div>
-            </div>
+          {testimonials.map((t, i) => (
+            <TestimonialCard key={t.name} t={t} index={i} />
           ))}
         </div>
       </div>
