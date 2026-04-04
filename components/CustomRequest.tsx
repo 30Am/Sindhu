@@ -24,26 +24,56 @@ export default function CustomRequest() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+  const [budgetInput, setBudgetInput] = useState("10,000");
+  const [isBudgetFocused, setIsBudgetFocused] = useState(false);
   const budgetRef = useRef(10000);
   const fillRef = useRef<HTMLDivElement>(null);
   const thumbRef = useRef<HTMLDivElement>(null);
-  const displayRef = useRef<HTMLSpanElement>(null);
+  const sliderRef = useRef<HTMLInputElement>(null);
 
   const wordCount = request.trim() === "" ? 0 : request.trim().split(/\s+/).length;
   const percent = ((budget - MIN) / (MAX - MIN)) * 100;
 
-  const handleSliderInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = Number(e.target.value);
-    budgetRef.current = val;
+  const updateSliderUI = useCallback((val: number) => {
     const pct = ((val - MIN) / (MAX - MIN)) * 100;
     if (fillRef.current) fillRef.current.style.width = `${pct}%`;
     if (thumbRef.current) thumbRef.current.style.left = `calc(${pct}% - 11px)`;
-    if (displayRef.current) displayRef.current.textContent = formatINR(val);
+    if (sliderRef.current) sliderRef.current.value = String(val);
   }, []);
+
+  const handleSliderInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value);
+    budgetRef.current = val;
+    updateSliderUI(val);
+    setBudgetInput(val.toLocaleString("en-IN"));
+  }, [updateSliderUI]);
 
   const handleSliderCommit = useCallback(() => {
     setBudget(budgetRef.current);
   }, []);
+
+  const handleBudgetType = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    // Allow only digits while typing
+    const raw = e.target.value.replace(/[^0-9]/g, "");
+    setBudgetInput(raw);
+    const num = Number(raw);
+    if (!isNaN(num) && raw !== "") {
+      const clamped = Math.min(Math.max(num, MIN), MAX);
+      budgetRef.current = clamped;
+      setBudget(clamped);
+      updateSliderUI(clamped);
+    }
+  }, [updateSliderUI]);
+
+  const handleBudgetBlur = useCallback(() => {
+    setIsBudgetFocused(false);
+    const num = Number(budgetInput.replace(/,/g, ""));
+    const clamped = isNaN(num) || budgetInput === "" ? MIN : Math.min(Math.max(num, MIN), MAX);
+    budgetRef.current = clamped;
+    setBudget(clamped);
+    updateSliderUI(clamped);
+    setBudgetInput(clamped.toLocaleString("en-IN"));
+  }, [budgetInput, updateSliderUI]);
 
   const handleSubmit = async () => {
     if (!name.trim() || !email.trim()) {
@@ -193,12 +223,22 @@ export default function CustomRequest() {
               How much are you ready to invest?
             </label>
 
-            {/* Budget pill */}
+            {/* Budget pill — typeable */}
             <div className="flex justify-center mb-5">
-              <div className="inline-flex flex-col items-center bg-gradient-to-br from-[#f0f2ff] to-[#f5f0ff] border border-[#e0e0f5] rounded-2xl px-8 py-3">
-                <span ref={displayRef} className="font-black text-[34px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent leading-none tracking-tight">
-                  {formatINR(budget)}
-                </span>
+              <div className={`inline-flex flex-col items-center bg-gradient-to-br from-[#f0f2ff] to-[#f5f0ff] border rounded-2xl px-8 py-3 transition-all duration-200 ${isBudgetFocused ? "border-[#7c3aed] shadow-[0_0_0_3px_rgba(124,58,237,0.15)]" : "border-[#e0e0f5]"}`}>
+                <div className="flex items-center">
+                  <span className="font-black text-[34px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent leading-none tracking-tight">₹</span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={isBudgetFocused ? budgetInput.replace(/,/g, "") : budgetInput}
+                    onChange={handleBudgetType}
+                    onFocus={() => { setIsBudgetFocused(true); setBudgetInput(budget.toLocaleString("en-IN").replace(/,/g, "")); }}
+                    onBlur={handleBudgetBlur}
+                    className="font-black text-[34px] bg-transparent bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent leading-none tracking-tight outline-none w-[160px] text-center caret-[#7c3aed]"
+                    style={{ WebkitTextFillColor: "transparent", backgroundImage: "linear-gradient(to right, #002eff, #7c3aed)", backgroundClip: "text" }}
+                  />
+                </div>
                 <span className="text-[10px] text-[#9999b0] mt-1 tracking-widest uppercase font-semibold">your budget</span>
               </div>
             </div>
@@ -211,6 +251,7 @@ export default function CustomRequest() {
                 style={{ width: `${percent}%` }}
               />
               <input
+                ref={sliderRef}
                 type="range"
                 min={MIN}
                 max={MAX}
