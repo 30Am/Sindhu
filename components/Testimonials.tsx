@@ -22,6 +22,30 @@ const testimonials = [
     handle: "Marketing Head · D2C Brand",
     initials: "AP",
   },
+  {
+    quote:
+      "This was really helpful. Learned alot of new stuff about youtube, things i was missing out on. Will be booking another call very soon after implementing all the recommendations you advised for. Thanks alot.",
+    name: "Kritika",
+    handle: "18th Jan, 2026",
+    initials: "K",
+    rating: 5,
+  },
+  {
+    quote:
+      "Patient, solution oriented, and encouraging, gives you a vision about how to present yourself as a creator and specific to your profile, what may and may not work for you. Helps you to turn down the noise and concentrate on the process.",
+    name: "Manav Jindal",
+    handle: "20th Jan, 2026",
+    initials: "MJ",
+    rating: 5,
+  },
+  {
+    quote:
+      "The conversation with Mr. Sindhu did not disappoint. His advice and guidance not only provided relevant knowledge but also wisdom. To take the best out of the counselling tell about your goal at the starting of the session and he will provide you the best solution to achieve it.",
+    name: "Shreya",
+    handle: "20th Jan, 2026",
+    initials: "S",
+    rating: 5,
+  },
 ];
 
 export default function Testimonials() {
