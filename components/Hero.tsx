@@ -177,66 +177,81 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="lg:hidden"
+        className="lg:hidden px-5 sm:px-8 pt-8 pb-12 sm:pb-16"
       >
-        {/* Photo — fixed height, full-bleed */}
-        <motion.div variants={photoVariants} className="relative w-full h-[320px] sm:h-[420px] overflow-hidden bg-gradient-to-t from-[#e0e0ed] dark:from-[#1a1a2e] to-[#bdbdd1] dark:to-[#0f0f20]">
-          <Image
-            src={HERO_PHOTO}
-            alt="Sindhu Biswal"
-            fill
-            className="object-cover object-top"
-            priority
-            unoptimized
-          />
+        {/* Badge — left aligned */}
+        <motion.div
+          variants={itemSlideLeftVariants}
+          className="flex items-center gap-2 bg-[#f5f5fa] dark:bg-[#141428] border border-[#e8e8f0] dark:border-[#242440] rounded-full h-8 w-fit px-4 shadow-sm mb-7"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0 animate-pulse" />
+          <span className="text-[11px] font-medium text-[#0a0a0a] dark:text-[#eeeeff]">
+            Available for New Audits
+          </span>
         </motion.div>
 
-        {/* Text content below photo */}
-        <div className="px-5 sm:px-8 pt-6 pb-12 sm:pb-16 flex flex-col items-center text-center gap-4">
-          <motion.div variants={itemSlideLeftVariants} className="flex items-center gap-2 bg-[#f5f5fa] dark:bg-[#141428] border border-[#e8e8f0] dark:border-[#242440] rounded-full h-8 px-4 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0 animate-pulse" />
-            <span className="text-[11px] font-medium text-[#0a0a0a] dark:text-[#eeeeff]">
-              Available for New Audits
-            </span>
-          </motion.div>
+        {/* Editorial split: big name left + portrait photo right */}
+        <div className="flex items-start gap-5 mb-5">
 
-          <motion.div variants={itemSlideRightVariants}>
-            <p className="font-extrabold text-[10px] tracking-[4px] text-[#0a0a0a] dark:text-[#eeeeff] uppercase mb-0.5">
+          {/* Left: stacked name */}
+          <motion.div variants={itemSlideLeftVariants} className="flex-1">
+            <p className="font-extrabold text-[9px] tracking-[3.5px] text-[#0a0a0a]/40 dark:text-[#eeeeff]/30 uppercase mb-3">
               BREAKDOWN BY
             </p>
-            <p className="font-black text-[48px] sm:text-[60px] leading-none tracking-[-2px] text-[#0a0a0a] dark:text-[#eeeeff]">
-              SINDHU
+            <p className="font-black text-[64px] sm:text-[76px] leading-[0.88] tracking-[-3px] text-[#0a0a0a] dark:text-[#eeeeff]">
+              SIN<br />DHU
             </p>
           </motion.div>
 
-          <motion.p variants={itemSlideLeftVariants} className="font-black text-[30px] sm:text-[38px] leading-tight tracking-[-1px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent">
-            GROWTH AUDITOR
-          </motion.p>
-
-          <motion.p variants={itemSlideRightVariants} className="text-[#555566] dark:text-[#8888bb] text-[13px] leading-[21px] max-w-xs">
-            Specialized in Instagram, YouTube Growth Strategy, and Content
-            Marketing.
-          </motion.p>
-
-          <motion.div variants={itemUpVariants} className="flex items-center gap-3 flex-wrap justify-center pt-1">
-            <motion.a
-              href="#book"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[13px] font-semibold h-11 px-6 rounded-full shadow-md hover:shadow-lg transition-all"
-            >
-              Get My Audit Now
-            </motion.a>
-            <motion.a
-              href="#services"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center border-[1.5px] border-[#002eff] text-[#002eff] text-[13px] font-semibold h-11 px-5 rounded-full hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
-            >
-              See What&apos;s Included
-            </motion.a>
+          {/* Right: portrait photo card */}
+          <motion.div variants={itemSlideRightVariants} className="flex-shrink-0 w-[116px] sm:w-[134px] mt-7">
+            <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-t from-[#d8d8ec] dark:from-[#1a1a2e] to-[#c2beda] dark:to-[#0f0f20] shadow-[0_12px_40px_rgba(0,46,255,0.18)]">
+              <Image
+                src={HERO_PHOTO}
+                alt="Sindhu Biswal"
+                fill
+                className="object-cover object-top"
+                priority
+              />
+              <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/15 to-transparent pointer-events-none" />
+            </div>
+            <div className="mt-2.5 mx-auto w-8 h-[3px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-full" />
           </motion.div>
         </div>
+
+        {/* GROWTH AUDITOR — gradient, left-aligned */}
+        <motion.p
+          variants={itemSlideLeftVariants}
+          className="font-black text-[46px] sm:text-[56px] leading-[1.0] tracking-[-2px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent mb-4"
+        >
+          GROWTH<br />AUDITOR
+        </motion.p>
+
+        {/* Description */}
+        <motion.p
+          variants={itemSlideRightVariants}
+          className="text-[#555566] dark:text-[#8888bb] text-[13px] leading-[22px] max-w-[260px] mb-7"
+        >
+          Specialized in Instagram, YouTube Growth Strategy, and Content Marketing.
+        </motion.p>
+
+        {/* CTAs — full-width stacked */}
+        <motion.div variants={itemUpVariants} className="flex flex-col gap-3">
+          <motion.a
+            href="#book"
+            whileTap={{ scale: 0.97 }}
+            className="flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[13px] font-semibold h-12 rounded-full shadow-md"
+          >
+            Get My Audit Now
+          </motion.a>
+          <motion.a
+            href="#services"
+            whileTap={{ scale: 0.97 }}
+            className="flex items-center justify-center border-[1.5px] border-[#002eff] text-[#002eff] text-[13px] font-semibold h-12 rounded-full hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
+          >
+            See What&apos;s Included
+          </motion.a>
+        </motion.div>
       </motion.div>
 
     </section>
