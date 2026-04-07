@@ -34,7 +34,7 @@ export default function Services() {
   const [platform, setPlatform] = useState<Platform>("both");
 
   return (
-    <section id="services" className="bg-gradient-to-b from-[#f6f6fe] to-white py-10 sm:py-16 lg:py-24">
+    <section id="services" className="bg-gradient-to-b from-[#f6f6fe] dark:from-[#0b0b18] to-white dark:to-[#07070e] py-10 sm:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
 
         {/* Label */}
@@ -45,10 +45,10 @@ export default function Services() {
           </span>
         </div>
 
-        <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] text-center mb-4 leading-tight">
+        <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] text-center mb-4 leading-tight">
           Sindhu&apos;s Proprietary Way of Auditing Growth
         </h2>
-        <p className="text-[#555566] text-[14px] sm:text-[16px] leading-[26px] text-center mb-8 max-w-[560px] mx-auto">
+        <p className="text-[#555566] dark:text-[#8888bb] text-[14px] sm:text-[16px] leading-[26px] text-center mb-8 max-w-[560px] mx-auto">
           A refined, experience-backed audit system designed to decode, diagnose,
           and expand your digital presence with precision
         </p>
@@ -61,7 +61,7 @@ export default function Services() {
             className={`h-10 sm:h-11 px-4 sm:px-6 rounded-full text-[12px] sm:text-[13px] font-semibold transition-all cursor-pointer flex items-center gap-2 ${
               platform === "instagram"
                 ? "bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white shadow-md"
-                : "bg-white border border-[#e8e8f0] text-[#0a0a0a] hover:border-[#002eff]"
+                : "bg-white dark:bg-[#101020] border border-[#e8e8f0] dark:border-[#242440] text-[#0a0a0a] dark:text-[#eeeeff] hover:border-[#002eff]"
             }`}
           >
             <span className="w-[26px] h-[26px] rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden relative"
@@ -78,7 +78,7 @@ export default function Services() {
             className={`h-10 sm:h-11 px-4 sm:px-6 rounded-full text-[12px] sm:text-[13px] font-semibold transition-all cursor-pointer flex items-center gap-2 ${
               platform === "youtube"
                 ? "bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white shadow-md"
-                : "bg-white border border-[#e8e8f0] text-[#0a0a0a] hover:border-[#002eff]"
+                : "bg-white dark:bg-[#101020] border border-[#e8e8f0] dark:border-[#242440] text-[#0a0a0a] dark:text-[#eeeeff] hover:border-[#002eff]"
             }`}
           >
             <span className="w-[26px] h-[26px] rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden relative"
@@ -95,7 +95,7 @@ export default function Services() {
             className={`h-10 sm:h-11 px-4 sm:px-6 rounded-full text-[12px] sm:text-[13px] font-semibold transition-all cursor-pointer flex items-center gap-2 ${
               platform === "both"
                 ? "bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white shadow-md"
-                : "bg-white border border-[#e8e8f0] text-[#0a0a0a] hover:border-[#002eff]"
+                : "bg-white dark:bg-[#101020] border border-[#e8e8f0] dark:border-[#242440] text-[#0a0a0a] dark:text-[#eeeeff] hover:border-[#002eff]"
             }`}
           >
             <span className="flex items-center gap-1 flex-shrink-0">
@@ -132,7 +132,7 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
 
   useEffect(() => {
     const els = [basicRef.current, advancedRef.current];
-    els.forEach((el, i) => {
+    els.forEach((el) => {
       if (!el) return;
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -155,24 +155,24 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
           <div
             ref={basicRef}
             style={{ opacity: 0, transform: "translateY(36px) scale(0.97)", transition: "opacity 0.55s ease 0s, transform 0.55s cubic-bezier(0.34,1.2,0.64,1) 0s, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease" }}
-            className="bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_20px_0px_rgba(0,0,0,0.05)] p-6 sm:p-8 flex flex-col hover:scale-[1.03] hover:shadow-[0px_8px_40px_0px_rgba(124,58,237,0.15)] hover:bg-[#f5f3ff] hover:border-[#c4b5fd] active:scale-[1.02] active:shadow-[0px_8px_32px_0px_rgba(124,58,237,0.2)] active:bg-[#f5f3ff] active:border-[#c4b5fd]">
+            className="bg-white dark:bg-[#101020] border border-[#e8e8f0] dark:border-[#242440] rounded-2xl shadow-[0px_4px_20px_0px_rgba(0,0,0,0.05)] dark:shadow-[0px_4px_20px_0px_rgba(0,0,0,0.3)] p-6 sm:p-8 flex flex-col hover:scale-[1.03] hover:shadow-[0px_8px_40px_0px_rgba(124,58,237,0.15)] hover:bg-[#f5f3ff] dark:hover:bg-[#14102a] hover:border-[#c4b5fd] active:scale-[1.02] active:shadow-[0px_8px_32px_0px_rgba(124,58,237,0.2)] active:bg-[#f5f3ff] dark:active:bg-[#14102a] active:border-[#c4b5fd]">
             <div className="mb-auto">
-              <p className="text-[10px] font-semibold text-[#8c8ca6] tracking-[2px] uppercase mb-2">
+              <p className="text-[10px] font-semibold text-[#8c8ca6] dark:text-[#6060a0] tracking-[2px] uppercase mb-2">
                 TIER 1
               </p>
-              <h3 className="font-black text-[24px] sm:text-[28px] text-[#0a0a0a] mb-3">
+              <h3 className="font-black text-[24px] sm:text-[28px] text-[#0a0a0a] dark:text-[#eeeeff] mb-3">
                 Basic Audit
               </h3>
               <p className="font-black text-[38px] sm:text-[44px] text-[#002eff] tracking-[-1px] leading-none">
                 {prices[platform].basic}
               </p>
-              <p className="text-[13px] text-[#555566] mt-2 mb-5">per platform</p>
-              <div className="border-t border-[#e8e8f0] mb-5" />
+              <p className="text-[13px] text-[#555566] dark:text-[#8888bb] mt-2 mb-5">per platform</p>
+              <div className="border-t border-[#e8e8f0] dark:border-[#242440] mb-5" />
               <ul className="space-y-3">
                 {basicFeatures.map((f) => (
                   <li key={f} className="flex items-start gap-3">
                     <span className="font-bold text-[#002eff] text-[13px] mt-0.5 flex-shrink-0">✓</span>
-                    <span className="text-[#555566] text-[13px] leading-[20px]">{f}</span>
+                    <span className="text-[#555566] dark:text-[#8888bb] text-[13px] leading-[20px]">{f}</span>
                   </li>
                 ))}
               </ul>
@@ -190,7 +190,7 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
           <div
             ref={advancedRef}
             style={{ opacity: 0, transform: "translateY(36px) scale(0.97)", transition: "opacity 0.55s ease 0.1s, transform 0.55s cubic-bezier(0.34,1.2,0.64,1) 0.1s, box-shadow 0.3s ease, background-color 0.3s ease" }}
-            className="bg-[#0a0a0a] rounded-2xl shadow-[0px_16px_40px_0px_rgba(0,46,255,0.18)] p-6 sm:p-8 relative flex flex-col hover:scale-[1.03] hover:shadow-[0px_24px_60px_0px_rgba(124,58,237,0.35)] hover:bg-[#110d1f] active:scale-[1.02] active:shadow-[0px_20px_50px_0px_rgba(124,58,237,0.4)] active:bg-[#110d1f]">
+            className="bg-[#0a0a0a] dark:bg-[#0d0d20] rounded-2xl shadow-[0px_16px_40px_0px_rgba(0,46,255,0.18)] p-6 sm:p-8 relative flex flex-col hover:scale-[1.03] hover:shadow-[0px_24px_60px_0px_rgba(124,58,237,0.35)] hover:bg-[#110d1f] active:scale-[1.02] active:shadow-[0px_20px_50px_0px_rgba(124,58,237,0.4)] active:bg-[#110d1f]">
             {/* Most Popular badge */}
             <div className="absolute top-6 right-6 bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[10px] font-semibold tracking-[0.5px] px-3 h-7 rounded-full flex items-center">
               ⭐ MOST POPULAR

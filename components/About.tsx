@@ -14,7 +14,7 @@ const tags = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-white py-10 sm:py-16 lg:py-24">
+    <section id="about" className="bg-white dark:bg-[#07070e] py-10 sm:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
 
@@ -28,15 +28,15 @@ export default function About() {
               </span>
             </div>
 
-            <h2 className="font-black text-[32px] sm:text-[40px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] mb-5 leading-tight">
+            <h2 className="font-black text-[32px] sm:text-[40px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] mb-5 leading-tight">
               Decode your Instagram!
             </h2>
 
-            <p className="text-[#555566] text-[15px] sm:text-[16px] leading-[26px] mb-5">
+            <p className="text-[#555566] dark:text-[#8888bb] text-[15px] sm:text-[16px] leading-[26px] mb-5">
               The consultant behind Raj Shamani&apos;s podcast growth. 500+ founders and creators have already done this with us and seen real results. Don&apos;t be the one who watches others grow while wondering what they&apos;re doing differently.
             </p>
 
-            <p className="text-[#555566] text-[15px] sm:text-[16px] leading-[26px] mb-8">
+            <p className="text-[#555566] dark:text-[#8888bb] text-[15px] sm:text-[16px] leading-[26px] mb-8">
               I will decode your Instagram and YouTube to see exactly why you&apos;re not growing, what&apos;s bleeding reach, and what to fix first. This isn&apos;t a template checklist, it&apos;s 15 years of pattern recognition, certified by Cannes Lions &amp; Ogilvy UK, put to work on your account.
             </p>
 
@@ -53,7 +53,7 @@ export default function About() {
                 ) : (
                   <span
                     key={tag.label}
-                    className="bg-[#f5f5fc] border border-[#e8e8f0] text-[#0a0a0a] text-[11px] sm:text-[12px] font-semibold px-4 h-8 rounded-full flex items-center"
+                    className="bg-[#f5f5fc] dark:bg-[#141428] border border-[#e8e8f0] dark:border-[#242440] text-[#0a0a0a] dark:text-[#eeeeff] text-[11px] sm:text-[12px] font-semibold px-4 h-8 rounded-full flex items-center"
                   >
                     {tag.label}
                   </span>
@@ -64,7 +64,7 @@ export default function About() {
 
           {/* Right: Photo with stat card */}
           <div className="relative w-full max-w-[420px] mx-auto lg:mx-0 lg:w-[420px] xl:w-[460px] flex-shrink-0">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-gradient-to-t from-[#e5e5f5] to-[#c7c2e5]">
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-gradient-to-t from-[#e5e5f5] dark:from-[#1a1a2e] to-[#c7c2e5] dark:to-[#0f0f20]">
               <Image
                 src={ABOUT_PHOTO}
                 alt="Sindhu Biswal"
@@ -74,11 +74,11 @@ export default function About() {
               />
             </div>
             {/* Stat card overlay */}
-            <div className="absolute bottom-[-16px] right-[-16px] sm:bottom-[-20px] sm:right-[-20px] bg-white rounded-2xl shadow-[0px_8px_24px_0px_rgba(0,46,255,0.12)] w-[150px] sm:w-[170px] p-4 sm:p-5">
+            <div className="absolute bottom-[-16px] right-[-16px] sm:bottom-[-20px] sm:right-[-20px] bg-white dark:bg-[#101020] rounded-2xl shadow-[0px_8px_24px_0px_rgba(0,46,255,0.12)] dark:shadow-[0px_8px_24px_0px_rgba(0,46,255,0.25)] w-[150px] sm:w-[170px] p-4 sm:p-5">
               <p className="font-black text-[28px] sm:text-[32px] text-[#002eff] leading-none">
                 23+
               </p>
-              <p className="text-[11px] sm:text-[12px] text-[#555566] mt-1">
+              <p className="text-[11px] sm:text-[12px] text-[#555566] dark:text-[#8888bb] mt-1">
                 Brands Scaled
               </p>
               <div className="mt-2 w-9 h-[3px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-full" />

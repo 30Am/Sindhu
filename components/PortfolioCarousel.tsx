@@ -88,8 +88,7 @@ export default function PortfolioCarousel() {
   }, []);
 
   return (
-    /* overflow-x-hidden only — lets the hover scale breathe vertically */
-    <section className="bg-white pt-10 sm:pt-14 pb-6 overflow-x-hidden">
+    <section className="bg-white dark:bg-[#07070e] pt-10 sm:pt-14 pb-6 overflow-x-hidden">
       <div
         ref={scrollRef}
         className="flex overflow-x-hidden hide-scrollbar select-none"
@@ -99,7 +98,6 @@ export default function PortfolioCarousel() {
           gap: "32px",
           scrollBehavior: "auto",
           pointerEvents: "none",
-          /* generous vertical padding so scaled cards never clip */
           paddingTop: "40px",
           paddingBottom: "40px",
         }}
@@ -114,13 +112,8 @@ export default function PortfolioCarousel() {
             onMouseEnter={() => { isPaused.current = true; }}
             onMouseLeave={() => { isPaused.current = false; }}
           >
-            {/*
-              Two-layer structure:
-              - outer .carousel-hover-wrap  → scales up on hover (no overflow-hidden, so nothing clips)
-              - inner .carousel-img-clip    → overflow-hidden + border-radius for clean edges
-            */}
             <div className="carousel-hover-wrap w-full aspect-[4/5]">
-              <div className="carousel-img-clip relative w-full h-full rounded-[24px] overflow-hidden shadow-xl bg-gradient-to-t from-[#e5e5f5] to-[#c7c2e5]">
+              <div className="carousel-img-clip relative w-full h-full rounded-[24px] overflow-hidden shadow-xl bg-gradient-to-t from-[#e5e5f5] dark:from-[#1a1a2e] to-[#c7c2e5] dark:to-[#0f0f20]">
                 <Image
                   src={`/carousel/${item.id}.png`}
                   alt={item.caption}
@@ -142,7 +135,6 @@ export default function PortfolioCarousel() {
         __html: `
           .hide-scrollbar::-webkit-scrollbar { display: none; }
 
-          /* Scale the outer wrapper — no overflow-hidden here so edges never clip */
           .carousel-hover-wrap {
             transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
           }
@@ -150,7 +142,6 @@ export default function PortfolioCarousel() {
             transform: scale(1.06);
           }
 
-          /* Shadow glow on the inner clip layer */
           .carousel-img-clip {
             transition: box-shadow 0.38s ease;
           }

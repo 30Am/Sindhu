@@ -71,14 +71,14 @@ export default function AnimatedStats() {
   ];
 
   return (
-    <div ref={sectionRef} className="bg-[#f7f7fd] border-t border-[#e8e8f0]">
+    <div ref={sectionRef} className="bg-[#f7f7fd] dark:bg-[#0b0b18] border-t border-[#e8e8f0] dark:border-[#242440]">
       <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4">
         {stats.map((stat, i) => (
           <div
             key={stat.label}
             className={`flex flex-col items-center justify-center py-6 sm:py-10 ${
-              i > 0 && i !== 2 ? "border-l border-[#e8e8f0]" : ""
-            } ${i === 2 || i === 3 ? "border-t lg:border-t-0 border-[#e8e8f0]" : ""} ${
+              i > 0 && i !== 2 ? "border-l border-[#e8e8f0] dark:border-[#242440]" : ""
+            } ${i === 2 || i === 3 ? "border-t lg:border-t-0 border-[#e8e8f0] dark:border-[#242440]" : ""} ${
               i === 2 ? "lg:border-l" : ""
             }`}
           >
@@ -98,7 +98,7 @@ export default function AnimatedStats() {
               />
             </p>
             <p
-              className="text-[12px] sm:text-[14px] font-bold text-[#555566] text-center px-1 uppercase tracking-wide"
+              className="text-[12px] sm:text-[14px] font-bold text-[#555566] dark:text-[#8888bb] text-center px-1 uppercase tracking-wide"
               style={{
                 opacity: triggered ? 1 : 0,
                 transition: `opacity 0.5s ease ${i * 0.1 + 0.2}s`,

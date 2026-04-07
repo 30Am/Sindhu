@@ -75,11 +75,11 @@ function TestimonialCard({ t, index }: { t: (typeof testimonials)[number]; index
         transform: "translateY(36px) scale(0.97)",
         transition: `opacity 0.55s ease ${index * 0.1}s, transform 0.55s cubic-bezier(0.34,1.2,0.64,1) ${index * 0.1}s`,
       }}
-      className="testimonial-card bg-white border border-[#e8e8f0] rounded-2xl shadow-[0px_4px_16px_0px_rgba(0,0,0,0.05)] p-6 relative overflow-hidden flex flex-col
+      className="testimonial-card bg-white dark:bg-[#101020] border border-[#e8e8f0] dark:border-[#242440] rounded-2xl shadow-[0px_4px_16px_0px_rgba(0,0,0,0.05)] dark:shadow-[0px_4px_16px_0px_rgba(0,0,0,0.3)] p-6 relative overflow-hidden flex flex-col
         active:scale-[0.98] active:shadow-[0_16px_40px_rgba(0,46,255,0.1),0_4px_12px_rgba(124,58,237,0.08)] active:border-[rgba(124,58,237,0.25)]"
     >
       <p className="font-bold text-[14px] text-[#f5d84a] mb-3">★★★★★</p>
-      <p className="text-[#555566] text-[14px] leading-[22px] flex-1 mb-6">
+      <p className="text-[#555566] dark:text-[#8888bb] text-[14px] leading-[22px] flex-1 mb-6">
         &ldquo;{t.quote}&rdquo;
       </p>
 
@@ -88,8 +88,8 @@ function TestimonialCard({ t, index }: { t: (typeof testimonials)[number]; index
           {t.initials}
         </div>
         <div>
-          <p className="font-semibold text-[13px] text-[#0a0a0a]">{t.name}</p>
-          <p className="text-[11px] text-[#555566]">{t.handle}</p>
+          <p className="font-semibold text-[13px] text-[#0a0a0a] dark:text-[#eeeeff]">{t.name}</p>
+          <p className="text-[11px] text-[#555566] dark:text-[#8888bb]">{t.handle}</p>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@ function TestimonialCard({ t, index }: { t: (typeof testimonials)[number]; index
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-white py-10 sm:py-16 lg:py-24">
+    <section id="testimonials" className="bg-white dark:bg-[#07070e] py-10 sm:py-16 lg:py-24">
       <style>{`
         @keyframes gradientShift {
           0%   { background-position: 0% 50%; }
@@ -138,6 +138,9 @@ export default function Testimonials() {
           box-shadow: 0 16px 40px rgba(0,46,255,0.1), 0 4px 12px rgba(124,58,237,0.08);
           border-color: rgba(124,58,237,0.25);
         }
+        .dark .testimonial-card:hover {
+          box-shadow: 0 16px 40px rgba(0,46,255,0.2), 0 4px 12px rgba(124,58,237,0.2);
+        }
         .testimonial-card:active {
           transform: translateY(-3px) scale(0.98);
           box-shadow: 0 16px 40px rgba(0,46,255,0.1), 0 4px 12px rgba(124,58,237,0.08);
@@ -157,7 +160,7 @@ export default function Testimonials() {
           </span>
         </div>
 
-        <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[42px] tracking-[-1px] text-[#0a0a0a] text-center mb-6 sm:mb-10 leading-tight">
+        <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[42px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] text-center mb-6 sm:mb-10 leading-tight">
           What People Say
         </h2>
 

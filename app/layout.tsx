@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,8 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className="bg-white text-[#0a0a0a]" suppressHydrationWarning>{children}</body>
+    <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.classList.toggle('dark',t==='dark')}catch(e){}`,
+          }}
+        />
+      </head>
+      <body suppressHydrationWarning>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

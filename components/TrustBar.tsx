@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "./ThemeProvider";
 
 const logos = [
   "/logos/1.png",
@@ -16,14 +19,22 @@ const logos = [
 ];
 
 export default function TrustBar() {
+  const { theme } = useTheme();
   const scrollBrands = [...logos, ...logos, ...logos, ...logos];
+  const fadeColor = theme === "dark" ? "#0b0b18" : "#f9f9fe";
 
   return (
-    <section className="bg-[#f9f9fe] border-t border-b border-[#e8e8f0] py-6 sm:py-10 flex items-center overflow-hidden w-full relative">
+    <section className="bg-[#f9f9fe] dark:bg-[#0b0b18] border-t border-b border-[#e8e8f0] dark:border-[#242440] py-6 sm:py-10 flex items-center overflow-hidden w-full relative">
       <div className="w-full relative flex items-center overflow-hidden">
         {/* Fading margins for the continuous loop effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-[#f9f9fe] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-[#f9f9fe] to-transparent z-10 pointer-events-none" />
+        <div
+          className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 z-10 pointer-events-none"
+          style={{ background: `linear-gradient(to right, ${fadeColor}, transparent)` }}
+        />
+        <div
+          className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 z-10 pointer-events-none"
+          style={{ background: `linear-gradient(to left, ${fadeColor}, transparent)` }}
+        />
 
         <div className="flex w-max animate-marquee items-center py-4">
           {scrollBrands.map((logo, i) => (

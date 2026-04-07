@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --font-sans: var(--font-inter);
@@ -12,6 +13,12 @@ body {
   font-family: var(--font-inter), Arial, sans-serif;
   background: #ffffff;
   color: #0a0a0a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background: #07070e;
+  color: #eeeeff;
 }
 
 @keyframes marquee {

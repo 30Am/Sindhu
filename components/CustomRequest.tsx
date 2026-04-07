@@ -53,7 +53,6 @@ export default function CustomRequest() {
   }, []);
 
   const handleBudgetType = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    // Allow only digits while typing
     const raw = e.target.value.replace(/[^0-9]/g, "");
     setBudgetInput(raw);
     const num = Number(raw);
@@ -104,10 +103,10 @@ export default function CustomRequest() {
   };
 
   const inputClass =
-    "w-full h-11 bg-white border border-[#e8e8f0] rounded-xl px-4 text-[14px] text-[#0a0a0a] placeholder:text-[#c0c0d0] focus:outline-none focus:border-[#002eff] focus:ring-4 focus:ring-[#002eff]/8 transition-all duration-200";
+    "w-full h-11 bg-white dark:bg-[#141428] border border-[#e8e8f0] dark:border-[#242440] rounded-xl px-4 text-[14px] text-[#0a0a0a] dark:text-[#eeeeff] placeholder:text-[#c0c0d0] dark:placeholder:text-[#4a4a6a] focus:outline-none focus:border-[#002eff] focus:ring-4 focus:ring-[#002eff]/8 transition-all duration-200";
 
   return (
-    <section className="relative bg-white py-10 sm:py-16 lg:py-24 overflow-hidden">
+    <section className="relative bg-white dark:bg-[#07070e] py-10 sm:py-16 lg:py-24 overflow-hidden">
 
       {/* Subtle background orbs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#002eff]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -124,15 +123,15 @@ export default function CustomRequest() {
         </div>
 
         {/* Heading */}
-        <h2 className="font-black text-[32px] sm:text-[40px] tracking-[-1px] text-[#0a0a0a] mb-2 leading-tight">
+        <h2 className="font-black text-[32px] sm:text-[40px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] mb-2 leading-tight">
           Want something custom?
         </h2>
-        <p className="text-[15px] text-[#555566] mb-10 leading-[26px]">
+        <p className="text-[15px] text-[#555566] dark:text-[#8888bb] mb-10 leading-[26px]">
           Reach out and we&apos;ll craft something just for you within 24 hours.
         </p>
 
         {/* Form card */}
-        <div className="bg-white border border-[#e8e8f0] rounded-2xl shadow-[0_8px_40px_rgba(0,46,255,0.07)] p-6 sm:p-8">
+        <div className="bg-white dark:bg-[#101020] border border-[#e8e8f0] dark:border-[#242440] rounded-2xl shadow-[0_8px_40px_rgba(0,46,255,0.07)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.4)] p-6 sm:p-8">
 
           {/* Gradient accent bar */}
           <div className="h-[3px] w-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-full mb-7" />
@@ -140,7 +139,7 @@ export default function CustomRequest() {
           {/* Name + Email */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
             <div className="group">
-              <label className="block text-[11px] font-semibold text-[#9999b0] tracking-[1.5px] uppercase mb-2 transition-colors group-focus-within:text-[#002eff]">
+              <label className="block text-[11px] font-semibold text-[#9999b0] dark:text-[#6060a0] tracking-[1.5px] uppercase mb-2 transition-colors group-focus-within:text-[#002eff]">
                 Your name
               </label>
               <input
@@ -152,7 +151,7 @@ export default function CustomRequest() {
               />
             </div>
             <div className="group">
-              <label className="block text-[11px] font-semibold text-[#9999b0] tracking-[1.5px] uppercase mb-2 transition-colors group-focus-within:text-[#002eff]">
+              <label className="block text-[11px] font-semibold text-[#9999b0] dark:text-[#6060a0] tracking-[1.5px] uppercase mb-2 transition-colors group-focus-within:text-[#002eff]">
                 Email address
               </label>
               <input
@@ -167,7 +166,7 @@ export default function CustomRequest() {
 
           {/* Profile URL */}
           <div className="group mb-5">
-            <label className="block text-[11px] font-semibold text-[#9999b0] tracking-[1.5px] uppercase mb-2 transition-colors group-focus-within:text-[#002eff]">
+            <label className="block text-[11px] font-semibold text-[#9999b0] dark:text-[#6060a0] tracking-[1.5px] uppercase mb-2 transition-colors group-focus-within:text-[#002eff]">
               Profile / Channel URL
             </label>
             <input
@@ -181,7 +180,7 @@ export default function CustomRequest() {
 
           {/* Textarea */}
           <div className="group mb-5">
-            <label className="block text-[11px] font-semibold text-[#9999b0] tracking-[1.5px] uppercase mb-2 transition-colors group-focus-within:text-[#002eff]">
+            <label className="block text-[11px] font-semibold text-[#9999b0] dark:text-[#6060a0] tracking-[1.5px] uppercase mb-2 transition-colors group-focus-within:text-[#002eff]">
               What do you need?
             </label>
             <textarea
@@ -189,10 +188,10 @@ export default function CustomRequest() {
               onChange={(e) => setRequest(e.target.value)}
               placeholder="Describe your custom request: goals, platform, what you're struggling with, what outcome you want..."
               rows={5}
-              className="w-full bg-white border border-[#e8e8f0] rounded-xl px-4 py-3 text-[14px] text-[#0a0a0a] placeholder:text-[#c0c0d0] focus:outline-none focus:border-[#002eff] focus:ring-4 focus:ring-[#002eff]/8 transition-all duration-200 resize-none leading-relaxed"
+              className="w-full bg-white dark:bg-[#141428] border border-[#e8e8f0] dark:border-[#242440] rounded-xl px-4 py-3 text-[14px] text-[#0a0a0a] dark:text-[#eeeeff] placeholder:text-[#c0c0d0] dark:placeholder:text-[#4a4a6a] focus:outline-none focus:border-[#002eff] focus:ring-4 focus:ring-[#002eff]/8 transition-all duration-200 resize-none leading-relaxed"
             />
             <div className="flex items-center justify-between mt-2">
-              <div className="flex-1 h-[3px] rounded-full bg-[#f0f0f8] overflow-hidden mr-3">
+              <div className="flex-1 h-[3px] rounded-full bg-[#f0f0f8] dark:bg-[#1c1c35] overflow-hidden mr-3">
                 <div
                   className={`h-full rounded-full transition-all duration-300 ${
                     wordCount > 200
@@ -206,7 +205,7 @@ export default function CustomRequest() {
               </div>
               <span
                 className={`text-[11px] font-medium tabular-nums transition-colors flex-shrink-0 ${
-                  wordCount > 200 ? "text-red-500" : wordCount > 160 ? "text-amber-500" : "text-[#c0c0d0]"
+                  wordCount > 200 ? "text-red-500" : wordCount > 160 ? "text-amber-500" : "text-[#c0c0d0] dark:text-[#4a4a6a]"
                 }`}
               >
                 {wordCount} / 200
@@ -215,17 +214,17 @@ export default function CustomRequest() {
           </div>
 
           {/* Divider */}
-          <div className="h-px bg-[#f0f0f8] my-6" />
+          <div className="h-px bg-[#f0f0f8] dark:bg-[#242440] my-6" />
 
           {/* Budget */}
           <div className="mb-7">
-            <label className="block text-[11px] font-semibold text-[#9999b0] tracking-[1.5px] uppercase mb-5">
+            <label className="block text-[11px] font-semibold text-[#9999b0] dark:text-[#6060a0] tracking-[1.5px] uppercase mb-5">
               How much are you ready to invest?
             </label>
 
             {/* Budget pill — typeable */}
             <div className="flex justify-center mb-5">
-              <div className={`inline-flex flex-col items-center bg-gradient-to-br from-[#f0f2ff] to-[#f5f0ff] border rounded-2xl px-8 py-3 transition-all duration-200 ${isBudgetFocused ? "border-[#7c3aed] shadow-[0_0_0_3px_rgba(124,58,237,0.15)]" : "border-[#e0e0f5]"}`}>
+              <div className={`inline-flex flex-col items-center bg-gradient-to-br from-[#f0f2ff] dark:from-[#141428] to-[#f5f0ff] dark:to-[#1a1030] border rounded-2xl px-8 py-3 transition-all duration-200 ${isBudgetFocused ? "border-[#7c3aed] shadow-[0_0_0_3px_rgba(124,58,237,0.15)]" : "border-[#e0e0f5] dark:border-[#242440]"}`}>
                 <div className="flex items-center">
                   <span className="font-black text-[34px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent leading-none tracking-tight">₹</span>
                   <input
@@ -239,12 +238,12 @@ export default function CustomRequest() {
                     style={{ WebkitTextFillColor: "transparent", backgroundImage: "linear-gradient(to right, #002eff, #7c3aed)", backgroundClip: "text" }}
                   />
                 </div>
-                <span className="text-[10px] text-[#9999b0] mt-1 tracking-widest uppercase font-semibold">your budget</span>
+                <span className="text-[10px] text-[#9999b0] dark:text-[#6060a0] mt-1 tracking-widest uppercase font-semibold">your budget</span>
               </div>
             </div>
 
             {/* Track */}
-            <div className="relative h-[6px] rounded-full bg-[#ebebf5] mx-1">
+            <div className="relative h-[6px] rounded-full bg-[#ebebf5] dark:bg-[#1c1c35] mx-1">
               <div
                 ref={fillRef}
                 className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] pointer-events-none will-change-[width]"
@@ -266,7 +265,7 @@ export default function CustomRequest() {
               {/* Thumb */}
               <div
                 ref={thumbRef}
-                className="absolute top-1/2 -translate-y-1/2 w-[22px] h-[22px] rounded-full bg-white border-2 border-[#7c3aed] shadow-[0_2px_12px_rgba(124,58,237,0.35)] pointer-events-none will-change-[left]"
+                className="absolute top-1/2 -translate-y-1/2 w-[22px] h-[22px] rounded-full bg-white dark:bg-[#141428] border-2 border-[#7c3aed] shadow-[0_2px_12px_rgba(124,58,237,0.35)] pointer-events-none will-change-[left]"
                 style={{ left: `calc(${percent}% - 11px)` }}
               >
                 <div className="absolute inset-[4px] rounded-full bg-gradient-to-br from-[#002eff] to-[#7c3aed]" />
@@ -276,7 +275,7 @@ export default function CustomRequest() {
             {/* Ticks */}
             <div className="flex justify-between mt-3 px-1">
               {[1, 12.5, 25, 37.5, 50].map((v) => (
-                <span key={v} className="text-[10px] text-[#c0c0d0] font-medium">
+                <span key={v} className="text-[10px] text-[#c0c0d0] dark:text-[#4a4a6a] font-medium">
                   ₹{v}k
                 </span>
               ))}
@@ -285,14 +284,14 @@ export default function CustomRequest() {
 
           {/* Error / Success */}
           {errorMsg && (
-            <p className="text-red-600 text-[13px] mb-4 bg-red-50 py-2.5 px-4 rounded-xl border border-red-100 font-medium">
+            <p className="text-red-600 dark:text-red-400 text-[13px] mb-4 bg-red-50 dark:bg-red-950/30 py-2.5 px-4 rounded-xl border border-red-100 dark:border-red-900/50 font-medium">
               {errorMsg}
             </p>
           )}
           {isSuccess && (
-            <div className="mb-4 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-xl py-3 px-4 text-center">
-              <p className="text-emerald-700 text-[13px] font-semibold">Request submitted!</p>
-              <p className="text-emerald-600 text-[12px] mt-0.5">We&apos;ll get back to you within 24 hours.</p>
+            <div className="mb-4 bg-gradient-to-r from-emerald-50 dark:from-emerald-950/30 to-teal-50 dark:to-teal-950/30 border border-emerald-100 dark:border-emerald-900/50 rounded-xl py-3 px-4 text-center">
+              <p className="text-emerald-700 dark:text-emerald-400 text-[13px] font-semibold">Request submitted!</p>
+              <p className="text-emerald-600 dark:text-emerald-500 text-[12px] mt-0.5">We&apos;ll get back to you within 24 hours.</p>
             </div>
           )}
 
@@ -302,7 +301,6 @@ export default function CustomRequest() {
             disabled={isSubmitting || isSuccess || wordCount > 200}
             className="relative w-full h-[52px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[15px] font-bold rounded-xl overflow-hidden group transition-all duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-[0_8px_24px_rgba(0,46,255,0.35)] active:scale-[0.99]"
           >
-            {/* Shine sweep on hover */}
             <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 pointer-events-none" />
             <span className="relative">
               {isSubmitting ? "Submitting…" : isSuccess ? "Submitted ✓" : "Send message"}

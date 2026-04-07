@@ -29,7 +29,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="bg-[#f8f8fe] py-10 sm:py-16 lg:py-24">
+    <section id="faq" className="bg-[#f8f8fe] dark:bg-[#0b0b18] py-10 sm:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
         {/* Label */}
         <div className="flex flex-col items-center gap-3 mb-4">
@@ -39,7 +39,7 @@ export default function FAQ() {
           </span>
         </div>
 
-        <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[42px] tracking-[-1px] text-[#0a0a0a] text-center mb-6 sm:mb-10 leading-tight">
+        <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[42px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] text-center mb-6 sm:mb-10 leading-tight">
           Got Questions?
         </h2>
 
@@ -47,17 +47,17 @@ export default function FAQ() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-white border border-[#e8e8f0] rounded-2xl overflow-hidden"
+              className="bg-white dark:bg-[#101020] border border-[#e8e8f0] dark:border-[#242440] rounded-2xl overflow-hidden"
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left cursor-pointer gap-4"
               >
-                <span className="font-semibold text-[13px] sm:text-[14px] text-[#0a0a0a] leading-snug">
+                <span className="font-semibold text-[13px] sm:text-[14px] text-[#0a0a0a] dark:text-[#eeeeff] leading-snug">
                   {faq.q}
                 </span>
                 <span
-                  className={`text-[18px] text-[#555566] flex-shrink-0 transition-transform duration-200 ${
+                  className={`text-[18px] text-[#555566] dark:text-[#8888bb] flex-shrink-0 transition-transform duration-200 ${
                     open === i ? "rotate-45" : ""
                   }`}
                 >
@@ -65,8 +65,8 @@ export default function FAQ() {
                 </span>
               </button>
               {open === i && (
-                <div className="px-5 sm:px-6 pb-5 border-t border-[#f0f0f8]">
-                  <p className="text-[13px] sm:text-[14px] text-[#555566] leading-[22px] pt-4">
+                <div className="px-5 sm:px-6 pb-5 border-t border-[#f0f0f8] dark:border-[#1c1c35]">
+                  <p className="text-[13px] sm:text-[14px] text-[#555566] dark:text-[#8888bb] leading-[22px] pt-4">
                     {faq.a}
                   </p>
                 </div>
