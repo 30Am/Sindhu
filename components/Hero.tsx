@@ -71,23 +71,23 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="hidden lg:flex relative min-h-[calc(100vh-68px)] max-w-[1400px] mx-auto px-10 xl:px-16 2xl:px-20 items-stretch"
+        className="hidden lg:flex relative min-h-[calc(100vh-68px)] max-w-[1440px] mx-auto px-6 lg:px-10 xl:px-14 2xl:px-16 items-stretch"
       >
         {/* LEFT: title top · badge middle · CTAs bottom */}
-        <div className="flex flex-col justify-between py-16 xl:py-20 w-[36%] flex-shrink-0 relative z-10">
+        <div className="flex flex-col justify-between py-16 xl:py-20 w-[34%] flex-shrink-0 relative z-20">
 
           <motion.div variants={itemSlideLeftVariants}>
-            <p className="font-black text-[56px] xl:text-[72px] 2xl:text-[88px] leading-[0.88] tracking-[-2px] xl:tracking-[-3px] text-[#0a0a0a] dark:text-[#eeeeff]">
+            <p className="font-black text-[56px] xl:text-[68px] 2xl:text-[80px] leading-[0.88] tracking-[-2px] xl:tracking-[-3px] text-[#0a0a0a] dark:text-[#eeeeff] whitespace-nowrap">
               BREAKDOWN
             </p>
-            <p className="font-black text-[24px] xl:text-[30px] 2xl:text-[36px] leading-none tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] mt-2 xl:mt-3">
+            <p className="font-black text-[24px] xl:text-[30px] 2xl:text-[34px] leading-none tracking-[4px] xl:tracking-[8px] text-[#0a0a0a] dark:text-[#eeeeff] mt-2 xl:mt-3 whitespace-nowrap">
               BY SINDHU
             </p>
           </motion.div>
 
           <motion.div
             variants={itemSlideLeftVariants}
-            className="flex items-center gap-2.5 bg-white dark:bg-[#141428] border border-[#e0e0ec] dark:border-[#242440] rounded-full h-10 w-fit px-4 shadow-sm"
+            className="flex items-center gap-2.5 bg-[#f4f4f9] border border-transparent dark:bg-[#141428] dark:border-[#242440] rounded-full h-10 w-fit px-4 shadow-sm my-auto lg:mt-24 lg:mb-12"
           >
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400 flex-shrink-0" />
             <span className="text-[13px] font-medium text-[#0a0a0a] dark:text-[#eeeeff] whitespace-nowrap">
@@ -95,12 +95,12 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <motion.div variants={itemSlideLeftVariants} className="flex items-center gap-3 flex-wrap">
+          <motion.div variants={itemSlideLeftVariants} className="flex items-center gap-4 flex-wrap">
             <motion.a
               href="#book"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[14px] font-semibold h-12 px-7 rounded-full shadow-md hover:shadow-lg transition-all"
+              className="inline-flex items-center justify-center bg-[#4d32ff] text-white text-[14px] font-semibold h-12 px-7 rounded-full shadow-md hover:shadow-lg transition-all"
             >
               Get My Audit Now
             </motion.a>
@@ -108,7 +108,7 @@ export default function Hero() {
               href="#services"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center border-[1.5px] border-[#0a0a0a] dark:border-[#eeeeff] text-[#0a0a0a] dark:text-[#eeeeff] text-[14px] font-semibold h-12 px-6 rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+              className="inline-flex items-center justify-center border-[1.5px] border-[#4d32ff] text-[#4d32ff] bg-transparent text-[14px] font-semibold h-12 px-6 rounded-full hover:bg-[#4d32ff]/5 transition-colors"
             >
               See What&apos;s Included
             </motion.a>
@@ -118,40 +118,40 @@ export default function Hero() {
 
         {/* CENTER: blob + photo */}
         <div className="flex-1 flex items-center justify-center relative">
-          {/* Blob */}
+          {/* Blob (soft circular gradient) */}
           <motion.div
             variants={blobVariants}
-            className="absolute rounded-full bg-[#ebebf5] dark:bg-[#12122a] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[540px] h-[540px] xl:w-[620px] xl:h-[620px]"
+            className="absolute rounded-full pointer-events-none left-[25%] -top-[10%] -translate-x-1/2 w-[700px] h-[700px] xl:w-[1000px] xl:h-[1000px] z-[0] bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-[#e5e2ff] via-[#eeedff]/60 to-transparent dark:from-[#252048] dark:via-[#1a1a3b]/50 dark:to-transparent"
           />
           {/* Photo */}
           <motion.div
             variants={photoVariants}
-            className="relative z-10 rounded-[20px] xl:rounded-[28px] overflow-hidden shadow-[0_24px_60px_rgba(0,46,255,0.13)]"
-            style={{ width: "min(300px, 80%)", aspectRatio: "3/4" }}
+            className="relative z-10 translate-x-2 lg:translate-x-4 xl:translate-x-6 2xl:translate-x-8 bg-[#dadae4] dark:bg-[#1a1a2e] rounded-[24px] xl:rounded-[32px] overflow-hidden shadow-[0_0px_100px_rgba(124,58,237,0.25)] dark:shadow-[0_0px_100px_rgba(124,58,237,0.4)]"
+            style={{ width: "min(460px, 95%)", aspectRatio: "3/4" }}
           >
             <Image
               src={HERO_PHOTO}
               alt="Sindhu Biswal"
               fill
-              className="object-cover object-top"
+              className="object-cover object-bottom"
               priority
             />
           </motion.div>
         </div>
 
         {/* RIGHT: description centered · GROWTH AUDITOR bottom */}
-        <div className="flex flex-col py-16 xl:py-20 w-[36%] flex-shrink-0 items-end text-right relative z-10">
+        <div className="flex flex-col py-16 xl:py-20 w-[34%] flex-shrink-0 items-start text-left relative z-20 pl-16 lg:pl-20 xl:pl-28 2xl:pl-36">
           <div className="flex-1" />
           <motion.p
             variants={itemSlideRightVariants}
-            className="text-[#888899] dark:text-[#8888bb] text-[14px] xl:text-[15px] leading-[26px] max-w-[200px] xl:max-w-[220px]"
+            className="text-[#888899] dark:text-[#8888bb] text-[14px] xl:text-[15px] leading-[26px] max-w-[210px] xl:max-w-[220px]"
           >
             Specialized in Instagram, YouTube Growth Strategy, and Content Marketing.
           </motion.p>
           <div className="flex-1" />
           <motion.p
             variants={itemSlideRightVariants}
-            className="font-black text-[64px] xl:text-[80px] 2xl:text-[96px] leading-[0.88] tracking-[-2px] xl:tracking-[-3px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent"
+            className="font-black text-[64px] xl:text-[76px] 2xl:text-[88px] leading-[0.88] tracking-[-2px] xl:tracking-[-3px] bg-gradient-to-b from-[#1541ff] to-[#7c1cf5] bg-clip-text text-transparent whitespace-nowrap"
           >
             GROWTH<br />AUDITOR
           </motion.p>
@@ -175,7 +175,7 @@ export default function Hero() {
               <p className="font-black text-[52px] sm:text-[60px] leading-[0.88] tracking-[-2px] text-[#0a0a0a] dark:text-[#eeeeff]">
                 BREAKDOWN
               </p>
-              <p className="font-black text-[22px] sm:text-[26px] leading-none tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] mt-2">
+              <p className="font-black text-[22px] sm:text-[26px] leading-none tracking-[4px] text-[#0a0a0a] dark:text-[#eeeeff] mt-2">
                 BY SINDHU
               </p>
             </motion.div>

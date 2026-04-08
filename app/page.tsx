@@ -11,6 +11,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import IntakeForm from "@/components/IntakeForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
+import BottomBanner from "@/components/BottomBanner";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
         <Testimonials />
         <FAQ />
       </main>
+      <BottomBanner />
       <Footer />
     </>
   );
