@@ -13,6 +13,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import BottomBanner from "@/components/BottomBanner";
 import Footer from "@/components/Footer";
+import StickyBanner from "@/components/StickyBanner";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
       </main>
       <BottomBanner />
       <Footer />
+      <StickyBanner />
     </>
   );
 }

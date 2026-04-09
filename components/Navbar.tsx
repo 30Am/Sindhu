@@ -96,6 +96,10 @@ export default function Navbar() {
 
           <a
             href="#book"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.hash = "book";
+            }}
             className="hidden sm:flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[12px] sm:text-[13px] font-semibold px-4 sm:px-5 h-[38px] sm:h-[40px] rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             Get Your Audit →
@@ -126,7 +130,11 @@ export default function Navbar() {
           <a
             href="#book"
             className="mt-2 flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[13px] font-semibold h-[44px] rounded-full"
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              window.location.hash = "book";
+            }}
           >
             Get Your Audit →
           </a>

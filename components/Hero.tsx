@@ -241,74 +241,87 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="md:hidden px-5 pt-8 pb-12"
+        className="md:hidden relative px-5 pt-6 pb-16 flex flex-col items-center text-center overflow-hidden"
       >
+        {/* Mobile Blob Gradient Background */}
+        <motion.div
+          variants={blobVariants}
+          className="absolute rounded-full pointer-events-none top-[15%] left-1/2 -translate-x-1/2 w-[140vw] aspect-square z-[0] bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-[#e5e2ff] via-[#e5e2ff]/40 to-transparent dark:from-[#252048] dark:via-[#1a1a3b]/40 dark:to-transparent blur-[60px]"
+        />
+
         {/* Badge */}
         <motion.div
-          variants={itemSlideLeftVariants}
-          className="flex items-center gap-2 bg-white dark:bg-[#141428] border border-[#e0e0ec] dark:border-[#242440] rounded-full h-8 w-fit px-4 shadow-sm mb-7"
+          variants={itemUpVariants}
+          className="relative z-10 flex items-center gap-2 bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-full h-8 px-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] mb-8"
         >
-          <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
-          <span className="text-[11px] font-medium text-[#0a0a0a] dark:text-[#eeeeff]">
+          <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 animate-pulse" />
+          <span className="text-[11px] font-semibold tracking-wide text-[#0a0a0a] dark:text-[#eeeeff]">
             Available for New Audits
           </span>
         </motion.div>
 
-        {/* Editorial split: name left + photo right */}
-        <div className="flex items-start gap-5 mb-5">
-          <motion.div variants={itemSlideLeftVariants} className="flex-1">
-            <p className="font-extrabold text-[9px] tracking-[3.5px] text-[#0a0a0a]/40 dark:text-[#eeeeff]/30 uppercase mb-3">
-              BREAKDOWN BY
-            </p>
-            <p className="font-black text-[64px] leading-[0.88] tracking-[-3px] text-[#0a0a0a] dark:text-[#eeeeff]">
-              SIN<br />DHU
-            </p>
-          </motion.div>
+        {/* Title */}
+        <motion.div variants={itemUpVariants} className="relative z-10 mb-8">
+          <p className="font-black text-[52px] sm:text-[64px] leading-[0.85] tracking-[-2px] text-[#0a0a0a] dark:text-[#eeeeff] mb-3">
+            BREAKDOWN
+          </p>
+          <p className="font-extrabold text-[11px] tracking-[4px] text-[#555566] dark:text-[#8888bb] uppercase">
+            BY SINDHU
+          </p>
+        </motion.div>
 
-          <motion.div variants={itemSlideRightVariants} className="flex-shrink-0 w-[116px] mt-7">
-            <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,46,255,0.18)]">
-              <Image
-                src={HERO_PHOTO}
-                alt="Sindhu Biswal"
-                fill
-                className="object-cover object-top"
-                priority
-              />
-              <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/15 to-transparent pointer-events-none" />
-            </div>
-            <div className="mt-2.5 mx-auto w-8 h-[3px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-full" />
-          </motion.div>
-        </div>
+        {/* Photo Container */}
+        <motion.div
+          variants={photoVariants}
+          className="relative z-10 w-full max-w-[310px] aspect-[4/5] mb-10"
+        >
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#002eff]/30 to-[#7c3aed]/30 rounded-[32px] blur-2xl transform translate-y-4" />
+          <div className="relative w-full h-full rounded-[32px] overflow-hidden shadow-[0_24px_80px_rgba(124,58,237,0.25)] dark:shadow-[0_24px_80px_rgba(124,58,237,0.4)] bg-[#dadae4] dark:bg-[#1a1a2e] ring-1 ring-black/5 dark:ring-white/10">
+            <Image
+              src={HERO_PHOTO}
+              alt="Sindhu Biswal"
+              fill
+              className="object-cover object-bottom"
+              priority
+            />
+          </div>
+        </motion.div>
 
         {/* GROWTH AUDITOR */}
         <motion.p
-          variants={itemSlideLeftVariants}
-          className="font-black text-[46px] leading-[1.0] tracking-[-2px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent mb-4"
+          variants={itemUpVariants}
+          className="relative z-10 font-black text-[52px] sm:text-[60px] leading-[0.9] tracking-[-2px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent mb-5"
         >
-          GROWTH<br />AUDITOR
+          GROWTH
+          <br />
+          AUDITOR
         </motion.p>
 
         {/* Description */}
         <motion.p
-          variants={itemSlideRightVariants}
-          className="text-[#888899] dark:text-[#8888bb] text-[13px] leading-[22px] max-w-[260px] mb-7"
+          variants={itemUpVariants}
+          className="relative z-10 text-[#555566] dark:text-[#8888bb] text-[15px] leading-[24px] max-w-[300px] mb-10 font-medium"
         >
           Specialized in Instagram, YouTube Growth Strategy, and Content Marketing.
         </motion.p>
 
         {/* CTAs */}
-        <motion.div variants={itemUpVariants} className="flex flex-col gap-3">
+        <motion.div variants={itemUpVariants} className="relative z-10 flex flex-col gap-3.5 w-full max-w-[300px]">
           <motion.a
             href="#book"
-            whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[13px] font-semibold h-12 rounded-full shadow-md"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.hash = "book";
+            }}
+            whileTap={{ scale: 0.96 }}
+            className="flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[15px] font-bold h-[56px] rounded-full shadow-[0_8px_24px_rgba(124,58,237,0.35)] hover:shadow-[0_12px_32px_rgba(124,58,237,0.5)] transition-all"
           >
-            Get My Audit Now
+            Get My Audit Now →
           </motion.a>
           <motion.a
             href="#services"
-            whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center border-[1.5px] border-[#0a0a0a] dark:border-[#eeeeff] text-[#0a0a0a] dark:text-[#eeeeff] text-[13px] font-semibold h-12 rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+            whileTap={{ scale: 0.96 }}
+            className="flex items-center justify-center bg-white/50 dark:bg-white/5 backdrop-blur-sm border-[1.5px] border-[#e0e0ec] dark:border-[#242440] text-[#0a0a0a] dark:text-[#eeeeff] text-[15px] font-bold h-[56px] rounded-full hover:bg-white dark:hover:bg-[#141428] transition-colors"
           >
             See What&apos;s Included
           </motion.a>

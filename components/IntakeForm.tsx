@@ -53,6 +53,17 @@ export default function IntakeForm() {
 
       if (error) throw error;
 
+      // Trigger the welcome email
+      try {
+        await fetch("/api/send-welcome", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, name }),
+        });
+      } catch (err) {
+        console.error("Failed to trigger welcome email", err);
+      }
+
       setIsSuccess(true);
     } catch (err: unknown) {
       console.error("Error submitting form:", err);
