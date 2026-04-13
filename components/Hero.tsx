@@ -126,16 +126,29 @@ export default function Hero() {
           {/* Photo */}
           <motion.div
             variants={photoVariants}
-            className="relative z-10 translate-x-2 lg:translate-x-4 xl:translate-x-6 2xl:translate-x-8 bg-[#dadae4] dark:bg-[#1a1a2e] rounded-[24px] xl:rounded-[32px] overflow-hidden shadow-[0_0px_100px_rgba(124,58,237,0.25)] dark:shadow-[0_0px_100px_rgba(124,58,237,0.4)]"
+            className="relative z-10 translate-x-2 lg:translate-x-4 xl:translate-x-6 2xl:translate-x-8 shadow-[0_0px_100px_rgba(124,58,237,0.25)] dark:shadow-[0_0px_100px_rgba(124,58,237,0.4)] rounded-[24px] xl:rounded-[32px]"
             style={{ width: "min(460px, 95%)", aspectRatio: "3/4" }}
           >
-            <Image
-              src={HERO_PHOTO}
-              alt="Sindhu Biswal"
-              fill
-              className="object-cover object-bottom"
-              priority
-            />
+            <div className="absolute inset-0 overflow-hidden bg-[#dadae4] dark:bg-[#1a1a2e] rounded-[24px] xl:rounded-[32px]">
+              <Image
+                src={HERO_PHOTO}
+                alt="Sindhu Biswal"
+                fill
+                className="object-cover object-bottom"
+                priority
+              />
+            </div>
+
+            {/* Floating Badge */}
+            <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 bg-white dark:bg-[#101020] rounded-[20px] lg:rounded-[28px] p-5 lg:p-7 shadow-[0px_24px_48px_rgba(0,0,0,0.12)] dark:shadow-[0px_24px_48px_rgba(0,0,0,0.4)] border border-transparent dark:border-[#242440] flex flex-col items-start z-20">
+              <span className="font-black text-[32px] lg:text-[40px] text-[#002eff] leading-none mb-1.5 lg:mb-2">
+                23+
+              </span>
+              <span className="text-[13px] lg:text-[15px] text-[#555566] dark:text-[#8888bb] font-medium leading-tight mb-2.5 lg:mb-3">
+                Brands Scaled
+              </span>
+              <div className="w-9 lg:w-12 h-1 bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-full" />
+            </div>
           </motion.div>
         </div>
 
@@ -284,6 +297,17 @@ export default function Hero() {
               className="object-cover object-bottom"
               priority
             />
+          </div>
+
+          {/* Floating Badge */}
+          <div className="absolute -bottom-4 -right-4 bg-white dark:bg-[#101020] rounded-[20px] p-4 shadow-[0px_16px_40px_rgba(0,0,0,0.12)] border border-transparent dark:border-[#242440] flex flex-col items-start z-20">
+            <span className="font-black text-[28px] text-[#002eff] leading-none mb-1">
+              23+
+            </span>
+            <span className="text-[12px] text-[#555566] dark:text-[#8888bb] font-medium leading-tight mb-2">
+              Brands Scaled
+            </span>
+            <div className="w-8 h-1 bg-gradient-to-r from-[#002eff] to-[#7c3aed] rounded-full" />
           </div>
         </motion.div>
 
