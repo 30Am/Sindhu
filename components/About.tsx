@@ -1,7 +1,6 @@
 import Image from "next/image";
 
-const ABOUT_PHOTO =
-  "https://www.figma.com/api/mcp/asset/d53d53be-eeec-45a1-97bc-311c856c1fac";
+const ABOUT_PHOTO = "/Gemini_Generated_Image_skdhthskdhthskdh.png";
 
 const tags = [
   { label: "Buzzlab Founder", gradient: true },
