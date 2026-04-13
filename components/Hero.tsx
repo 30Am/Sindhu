@@ -135,6 +135,7 @@ export default function Hero() {
               fill
               className="object-cover object-bottom"
               priority
+              unoptimized
             />
           </motion.div>
         </div>
@@ -224,6 +225,7 @@ export default function Hero() {
                 fill
                 className="object-cover object-top"
                 priority
+                unoptimized
               />
             </motion.div>
             <motion.p
@@ -283,6 +285,7 @@ export default function Hero() {
               fill
               className="object-cover object-bottom"
               priority
+              unoptimized
             />
           </div>
         </motion.div>
