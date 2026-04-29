@@ -4,15 +4,15 @@ import LegalPage from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Privacy Policy — Sindhu Biswal",
   description:
-    "How Sindhu Biswal / Buzzlab collects, uses, stores, and protects your personal information when you book a growth audit.",
+    "How Sindhu Biswal collects, uses, stores, and protects your personal information when you book a growth audit.",
 };
 
 export default function PrivacyPolicy() {
   return (
     <LegalPage title="Privacy Policy" lastUpdated="29 April 2026">
       <p>
-        This Privacy Policy explains how <strong>Sindhu Biswal</strong> (operating as <strong>Buzzlab</strong>,
-        referred to as &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses, and protects information you provide
+        This Privacy Policy explains how <strong>Sindhu Biswal</strong> (referred to as &quot;we&quot;, &quot;us&quot;,
+        or &quot;our&quot;) collects, uses, and protects information you provide
         when you visit <a href="https://www.sindhubiswal.com">www.sindhubiswal.com</a> or book a growth audit.
       </p>
       <p>

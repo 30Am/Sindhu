@@ -4,7 +4,7 @@ import LegalPage from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Refund & Cancellation Policy — Sindhu Biswal",
   description:
-    "Refund and cancellation policy for growth audits booked through Sindhu Biswal / Buzzlab on www.sindhubiswal.com.",
+    "Refund and cancellation policy for growth audits booked through Sindhu Biswal on www.sindhubiswal.com.",
 };
 
 export default function RefundPolicy() {
@@ -15,8 +15,7 @@ export default function RefundPolicy() {
         refund is possible, when it is not, and how to request one.
       </p>
       <p>
-        Throughout this policy, &quot;we&quot;, &quot;us&quot;, and &quot;our&quot; refer to <strong>Sindhu Biswal</strong>,{" "}
-        operating as <strong>Buzzlab</strong>.
+        Throughout this policy, &quot;we&quot;, &quot;us&quot;, and &quot;our&quot; refer to <strong>Sindhu Biswal</strong>.
       </p>
 
       <h2>1. When you are eligible for a full refund</h2>

@@ -3,7 +3,6 @@ import Image from "next/image";
 const ABOUT_PHOTO = "/Gemini_Generated_Image_skdhthskdhthskdh.png";
 
 const tags = [
-  { label: "Buzzlab Founder", gradient: true },
   { label: "Ex-FilterCopy", gradient: false },
   { label: "19+ Brands Advised", gradient: true },
   { label: "Ogilvy UK Cert.", gradient: false },

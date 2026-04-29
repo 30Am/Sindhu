@@ -5,7 +5,7 @@ import LegalPage from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Contact — Sindhu Biswal",
   description:
-    "Get in touch with Sindhu Biswal / Buzzlab for questions about growth audits, refunds, partnerships, or anything else.",
+    "Get in touch with Sindhu Biswal for questions about growth audits, refunds, partnerships, or anything else.",
 };
 
 export default function ContactPage() {
@@ -36,7 +36,7 @@ export default function ContactPage() {
 
       <h2>Business details</h2>
       <p>
-        <strong>Sindhu Biswal</strong> (operating as <strong>Buzzlab</strong>)
+        <strong>Sindhu Biswal</strong>
         <br />
         Bhubaneswar, Odisha, India
         <br />

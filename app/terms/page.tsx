@@ -4,7 +4,7 @@ import LegalPage from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Terms & Conditions — Sindhu Biswal",
   description:
-    "Terms and conditions governing the use of Sindhu Biswal / Buzzlab growth audit services and the www.sindhubiswal.com website.",
+    "Terms and conditions governing the use of Sindhu Biswal growth audit services and the www.sindhubiswal.com website.",
 };
 
 export default function TermsAndConditions() {
@@ -12,8 +12,8 @@ export default function TermsAndConditions() {
     <LegalPage title="Terms & Conditions" lastUpdated="29 April 2026">
       <p>
         These Terms &amp; Conditions (&quot;Terms&quot;) govern your use of <a href="https://www.sindhubiswal.com">www.sindhubiswal.com</a>{" "}
-        and the growth audit services offered by <strong>Sindhu Biswal</strong> (operating as <strong>Buzzlab</strong>,
-        referred to as &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). By booking an audit or using this website,
+        and the growth audit services offered by <strong>Sindhu Biswal</strong> (referred to as &quot;we&quot;,
+        &quot;us&quot;, or &quot;our&quot;). By booking an audit or using this website,
         you agree to be bound by these Terms.
       </p>
 
@@ -53,7 +53,7 @@ export default function TermsAndConditions() {
 
       <h2>5. Intellectual property</h2>
       <p>
-        All website content (text, images, branding) is owned by Sindhu Biswal / Buzzlab and protected by copyright
+        All website content (text, images, branding) is owned by Sindhu Biswal and protected by copyright
         and trademark laws. You receive a non-exclusive, non-transferable licence to use audit reports and
         recommendations delivered to you for your personal or business growth. You may not resell, redistribute, or
         publish them without written permission.

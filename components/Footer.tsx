@@ -11,7 +11,7 @@ export default function Footer() {
               SINDHU BISWAL
             </p>
             <p className="text-[12px] sm:text-[13px] text-[#737394] mb-5 leading-[20px]">
-              Growth Marketing Expert · Founder, Buzzlab
+              Growth Marketing Expert
             </p>
             <div className="flex gap-2 flex-wrap">
               <a
@@ -106,7 +106,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-[#262638] pt-5">
           <p className="text-[11px] text-[#4d4d6b] text-center">
-            © 2026 Sindhu Biswal / Buzzlab · All rights reserved
+            © 2026 Sindhu Biswal · All rights reserved
           </p>
         </div>
       </div>
