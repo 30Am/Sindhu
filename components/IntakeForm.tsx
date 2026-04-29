@@ -140,6 +140,12 @@ export default function IntakeForm() {
             if (!verifyRes.ok || !verifyData.success) {
               throw new Error(verifyData.error || "Payment verification failed.");
             }
+            if (verifyData.warning) {
+              // Payment succeeded and the welcome email fired, but our DB save
+              // hit a glitch. The server has already alerted the team to
+              // reconcile. The customer can safely see the success state.
+              console.warn("verify warning:", verifyData.warning);
+            }
             setIsSuccess(true);
           } catch (err) {
             console.error("Verification error:", err);
