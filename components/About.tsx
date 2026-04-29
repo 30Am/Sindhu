@@ -28,15 +28,11 @@ export default function About() {
             </div>
 
             <h2 className="font-black text-[32px] sm:text-[40px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] mb-5 leading-tight">
-              Decode your Instagram!
+              Scale your instagram
             </h2>
 
-            <p className="text-[#555566] dark:text-[#8888bb] text-[15px] sm:text-[16px] leading-[26px] mb-5">
-              The consultant behind Raj Shamani&apos;s podcast growth. 500+ founders and creators have already done this with us and seen real results. Don&apos;t be the one who watches others grow while wondering what they&apos;re doing differently.
-            </p>
-
             <p className="text-[#555566] dark:text-[#8888bb] text-[15px] sm:text-[16px] leading-[26px] mb-8">
-              I will decode your Instagram and YouTube to see exactly why you&apos;re not growing, what&apos;s bleeding reach, and what to fix first. This isn&apos;t a template checklist, it&apos;s 15 years of pattern recognition, certified by Cannes Lions &amp; Ogilvy UK, put to work on your account.
+              I was an advisor, coach of India&apos;s top podcasters and influencers. My team consists of growth advisors and analysts who will audit your page, find issues, problems, tell you where to fix, what to fix and will give you some advice and tips of scaling too. we have our internal Zeta framework to analyze social media pages of creators.
             </p>
 
             {/* Tags */}

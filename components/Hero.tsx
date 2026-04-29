@@ -91,7 +91,7 @@ export default function Hero() {
           >
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400 flex-shrink-0" />
             <span className="text-[13px] font-medium text-[#0a0a0a] dark:text-[#eeeeff] whitespace-nowrap">
-              Available for New Audits
+              ADVISOR/COACH OF CREATORS
             </span>
           </motion.div>
 
@@ -187,7 +187,7 @@ export default function Hero() {
             >
               <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
               <span className="text-[12px] font-medium text-[#0a0a0a] dark:text-[#eeeeff] whitespace-nowrap">
-                Available for New Audits
+                ADVISOR/COACH OF CREATORS
               </span>
             </motion.div>
 
@@ -258,7 +258,7 @@ export default function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 animate-pulse" />
           <span className="text-[11px] font-semibold tracking-wide text-[#0a0a0a] dark:text-[#eeeeff]">
-            Available for New Audits
+            ADVISOR/COACH OF CREATORS
           </span>
         </motion.div>
 

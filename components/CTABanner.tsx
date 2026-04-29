@@ -17,13 +17,13 @@ export default function CTABanner() {
             href="#book"
             className="flex items-center justify-center bg-white border border-[rgba(128,128,178,0.4)] text-[#0a0a0a] text-[13px] font-semibold h-12 sm:h-[52px] px-6 sm:px-8 rounded-full hover:bg-gray-100 transition-colors"
           >
-            Basic Audit — ₹2,999
+            Basic Audit - ₹2,999
           </a>
           <a
             href="#book"
             className="flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[13px] font-semibold h-12 sm:h-[52px] px-6 sm:px-8 rounded-full hover:opacity-90 transition-opacity"
           >
-            Advanced Audit — ₹6,999+
+            Advanced Audit - ₹6,999+
           </a>
         </div>
       </div>

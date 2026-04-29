@@ -46,11 +46,11 @@ export default function Services() {
         </div>
 
         <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] text-center mb-4 leading-tight">
-          Sindhu&apos;s Proprietary Way of Auditing Growth
+          We audit, analyze your page &amp; give you scale strategy
         </h2>
         <p className="text-[#555566] dark:text-[#8888bb] text-[14px] sm:text-[16px] leading-[26px] text-center mb-8 max-w-[560px] mx-auto">
-          A refined, experience-backed audit system designed to decode, diagnose,
-          and expand your digital presence with precision
+          We operate on our internal robust framework on analyzing whats right and
+          wrong on your instagram page and what can be better.
         </p>
 
         {/* Platform Toggle */}
