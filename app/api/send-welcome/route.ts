@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import WelcomeEmail from "../../../components/emails/WelcomeEmail";
+import React from 'react';
 
 export async function POST(request: Request) {
   try {
@@ -17,38 +20,26 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, warning: "Missing API Key" });
     }
 
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // Resend allows testing with their "onboarding@resend.dev" domain
-        // For production, you will need to verify your own domain and use e.g. "audit@yourdomain.com"
-        from: "Sindhu's Audit <onboarding@resend.dev>",
-        to: [email],
-        subject: "Welcome to Sindhu's audit",
-        html: `
-          <div style="font-family: sans-serif; max-w-[600px] margin: 0 auto;">
-            <h2>Welcome to Sindhu's Audit!</h2>
-            <p>Hi ${name || "there"},</p>
-            <p>Thanks for booking an audit. I'm excited to help you grow your digital presence, identify what's holding you back, and create an actionable strategy.</p>
-            <p>We'll be in touch very soon with the next steps.</p>
-            <br />
-            <p>Best regards,<br/>Sindhu</p>
-          </div>
-        `,
-      }),
+    const resend = new Resend(RESEND_API_KEY);
+
+    const from = process.env.EMAIL_FROM || "Sindhu's Audit <onboarding@resend.dev>";
+    const replyTo = process.env.EMAIL_REPLY_TO || undefined;
+
+    // Using the official SDK and React Email
+    const { data, error } = await resend.emails.send({
+      from,
+      to: [email],
+      replyTo,
+      subject: "Welcome to Sindhu's Audit!",
+      react: React.createElement(WelcomeEmail, { name }),
     });
 
-    if (!res.ok) {
-      const errorMsg = await res.text();
-      console.error("Resend error:", errorMsg);
-      return NextResponse.json({ error: "Attempted to send, but provider failed." }, { status: res.status });
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json({ error: "Attempted to send, but provider failed." }, { status: 400 });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, data });
   } catch (err: unknown) {
     console.error("send-welcome API Error:", err);
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });

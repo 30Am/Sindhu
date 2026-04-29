@@ -33,3 +33,63 @@ html.dark body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Typography for legal pages (Privacy / Terms / Refund / Contact) */
+.legal-prose h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 36px 0 12px;
+  letter-spacing: -0.3px;
+}
+html.dark .legal-prose h2 {
+  color: #eeeeff;
+}
+.legal-prose h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0a0a0a;
+  margin: 24px 0 8px;
+}
+html.dark .legal-prose h3 {
+  color: #eeeeff;
+}
+.legal-prose p {
+  margin: 0 0 16px;
+}
+.legal-prose ul,
+.legal-prose ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.legal-prose ul { list-style: disc; }
+.legal-prose ol { list-style: decimal; }
+.legal-prose li {
+  margin: 4px 0;
+}
+.legal-prose a {
+  color: #002eff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+html.dark .legal-prose a {
+  color: #7c7cff;
+}
+.legal-prose a:hover {
+  opacity: 0.85;
+}
+.legal-prose strong {
+  color: #0a0a0a;
+  font-weight: 600;
+}
+html.dark .legal-prose strong {
+  color: #eeeeff;
+}
+.legal-prose hr {
+  border: 0;
+  border-top: 1px solid #e8e8f0;
+  margin: 32px 0;
+}
+html.dark .legal-prose hr {
+  border-top-color: #242440;
+}

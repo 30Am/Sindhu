@@ -1,14 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Results", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Results", href: "/#testimonials" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 function SunIcon() {
@@ -63,12 +64,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 h-[68px] flex items-center justify-between gap-6">
         {/* Logo */}
-        <a
-          href="#"
+        <Link
+          href="/"
           className="font-black text-[13px] sm:text-[15px] tracking-[2.5px] text-[#0a0a0a] dark:text-[#eeeeff] uppercase flex-shrink-0"
         >
           SINDHU BISWAL
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-6 xl:gap-8">
@@ -94,16 +95,20 @@ export default function Navbar() {
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>
 
-          <a
-            href="#book"
+          <Link
+            href="/#book"
             onClick={(e) => {
-              e.preventDefault();
-              window.location.hash = "book";
+              // If we're on the home page, just set the hash (opens the IntakeForm modal).
+              // Otherwise let the link navigate to /#book.
+              if (window.location.pathname === "/") {
+                e.preventDefault();
+                window.location.hash = "book";
+              }
             }}
             className="hidden sm:flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[12px] sm:text-[13px] font-semibold px-4 sm:px-5 h-[38px] sm:h-[40px] rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             Get Your Audit →
-          </a>
+          </Link>
           <button
             className="lg:hidden p-2 text-[#0a0a0a] dark:text-[#eeeeff] text-xl leading-none"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -127,17 +132,19 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href="#book"
+          <Link
+            href="/#book"
             className="mt-2 flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[13px] font-semibold h-[44px] rounded-full"
             onClick={(e) => {
-              e.preventDefault();
               setMenuOpen(false);
-              window.location.hash = "book";
+              if (window.location.pathname === "/") {
+                e.preventDefault();
+                window.location.hash = "book";
+              }
             }}
           >
             Get Your Audit →
-          </a>
+          </Link>
         </div>
       )}
     </nav>
