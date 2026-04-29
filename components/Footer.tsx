@@ -85,10 +85,10 @@ export default function Footer() {
               Legal
             </p>
             <a
-              href="mailto:hello@buzzlab.in"
+              href="mailto:marketing@trythegrowthproject.com"
               className="block text-[12px] text-[#737394] hover:text-white mb-3 transition-colors"
             >
-              hello@buzzlab.in
+              marketing@trythegrowthproject.com
             </a>
             <a href="/privacy" className="block text-[12px] text-[#737394] hover:text-white mb-3 transition-colors">
               Privacy Policy

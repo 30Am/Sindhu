@@ -117,7 +117,7 @@ export default function TermsAndConditions() {
       <p>
         For any questions about these Terms:
         <br />
-        Email: <a href="mailto:hello@buzzlab.in">hello@buzzlab.in</a>
+        Email: <a href="mailto:marketing@trythegrowthproject.com">marketing@trythegrowthproject.com</a>
         <br />
         Website: <a href="https://www.sindhubiswal.com">www.sindhubiswal.com</a>
       </p>

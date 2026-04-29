@@ -35,7 +35,7 @@ export default function RefundPolicy() {
       </ul>
 
       <h2>3. How to request a refund</h2>
-      <p>To request a refund, email <a href="mailto:hello@buzzlab.in">hello@buzzlab.in</a> with:</p>
+      <p>To request a refund, email <a href="mailto:marketing@trythegrowthproject.com">marketing@trythegrowthproject.com</a> with:</p>
       <ul>
         <li>The email address used for the booking.</li>
         <li>The Razorpay payment ID or order ID from your confirmation email.</li>
@@ -78,7 +78,7 @@ export default function RefundPolicy() {
       <p>
         Questions about this policy or a refund request:
         <br />
-        Email: <a href="mailto:hello@buzzlab.in">hello@buzzlab.in</a>
+        Email: <a href="mailto:marketing@trythegrowthproject.com">marketing@trythegrowthproject.com</a>
         <br />
         Website: <a href="https://www.sindhubiswal.com">www.sindhubiswal.com</a>
       </p>

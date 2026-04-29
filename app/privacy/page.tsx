@@ -82,7 +82,7 @@ export default function PrivacyPolicy() {
       </ul>
       <p>
         To exercise any of these rights, email us at{" "}
-        <a href="mailto:hello@buzzlab.in">hello@buzzlab.in</a>. We will respond within 30 days.
+        <a href="mailto:marketing@trythegrowthproject.com">marketing@trythegrowthproject.com</a>. We will respond within 30 days.
       </p>
 
       <h2>8. Children&apos;s privacy</h2>
@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
       <p>
         Questions, concerns, or requests about this Privacy Policy:
         <br />
-        Email: <a href="mailto:hello@buzzlab.in">hello@buzzlab.in</a>
+        Email: <a href="mailto:marketing@trythegrowthproject.com">marketing@trythegrowthproject.com</a>
         <br />
         Website: <a href="https://www.sindhubiswal.com">www.sindhubiswal.com</a>
       </p>

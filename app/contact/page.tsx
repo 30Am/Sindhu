@@ -20,7 +20,7 @@ export default function ContactPage() {
       <p>
         For all enquiries — booking questions, refund requests, partnership opportunities, or media:
         <br />
-        <a href="mailto:hello@buzzlab.in">hello@buzzlab.in</a>
+        <a href="mailto:marketing@trythegrowthproject.com">marketing@trythegrowthproject.com</a>
       </p>
       <p>
         We typically reply within <strong>1 business day</strong> (Monday–Friday). Refund requests are acknowledged
@@ -40,7 +40,7 @@ export default function ContactPage() {
         <br />
         Bhubaneswar, Odisha, India
         <br />
-        Email: <a href="mailto:hello@buzzlab.in">hello@buzzlab.in</a>
+        Email: <a href="mailto:marketing@trythegrowthproject.com">marketing@trythegrowthproject.com</a>
         <br />
         Website: <a href="https://www.sindhubiswal.com">www.sindhubiswal.com</a>
       </p>

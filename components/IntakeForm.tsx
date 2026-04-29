@@ -144,7 +144,7 @@ export default function IntakeForm() {
           } catch (err) {
             console.error("Verification error:", err);
             setErrorMsg(
-              "Your payment went through, but we couldn't confirm it. Email hello@buzzlab.in with payment ID " +
+              "Your payment went through, but we couldn't confirm it. Email marketing@trythegrowthproject.com with payment ID " +
                 response.razorpay_payment_id +
                 "."
             );
