@@ -1,10 +1,53 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
 
 type Tier = "basic" | "advanced" | "both";
 type Goal = "followers" | "engagement" | "monetize" | "brand-deals";
+
+interface RazorpayResponse {
+  razorpay_order_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+}
+
+interface RazorpayOptions {
+  key: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  order_id: string;
+  prefill?: { name?: string; email?: string };
+  theme?: { color?: string };
+  handler: (response: RazorpayResponse) => void;
+  modal?: { ondismiss?: () => void };
+}
+
+interface RazorpayInstance {
+  open: () => void;
+  on: (event: "payment.failed", cb: (resp: { error: { description?: string } }) => void) => void;
+}
+
+declare global {
+  interface Window {
+    Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
+  }
+}
+
+/** Lazy-load the Razorpay Checkout script once. */
+function loadRazorpayScript(): Promise<boolean> {
+  return new Promise((resolve) => {
+    if (typeof window === "undefined") return resolve(false);
+    if (window.Razorpay) return resolve(true);
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+}
 
 export default function IntakeForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,39 +83,93 @@ export default function IntakeForm() {
     setErrorMsg("");
 
     try {
-      const { error } = await supabase.from("Audits").insert([
-        {
-          name,
-          email,
-          profile_url: url,
-          tier,
-          goal,
-          challenges,
-        },
-      ]);
-
-      if (error) throw error;
-
-      // Trigger the welcome email
-      try {
-        await fetch("/api/send-welcome", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, name }),
-        });
-      } catch (err) {
-        console.error("Failed to trigger welcome email", err);
+      // 1. Make sure the Razorpay Checkout script is on the page.
+      const scriptOk = await loadRazorpayScript();
+      if (!scriptOk) {
+        throw new Error("Couldn't load the payment gateway. Check your connection and try again.");
       }
 
-      setIsSuccess(true);
+      // 2. Ask our server to create a Razorpay order. Amount is computed
+      //    server-side from the tier so it can't be tampered with.
+      const orderRes = await fetch("/api/razorpay/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tier }),
+      });
+
+      const orderData = await orderRes.json();
+      if (!orderRes.ok) {
+        throw new Error(orderData.error || "Couldn't start payment. Please try again.");
+      }
+
+      // 3. Open Razorpay Checkout. On success, verify on our server.
+      const rzp = new window.Razorpay({
+        key: orderData.keyId,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: "Sindhu Biswal",
+        description:
+          tier === "advanced"
+            ? "Advanced Audit"
+            : tier === "basic"
+              ? "Basic Audit"
+              : "Both Platforms Audit",
+        order_id: orderData.orderId,
+        prefill: { name, email },
+        theme: { color: "#002eff" },
+        handler: async (response) => {
+          // 4. Send signature + form data to verify endpoint.
+          //    The audit is only saved + welcome email sent if the signature is valid.
+          try {
+            const verifyRes = await fetch("/api/razorpay/verify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                name,
+                email,
+                profile_url: url,
+                tier,
+                goal,
+                challenges,
+              }),
+            });
+            const verifyData = await verifyRes.json();
+            if (!verifyRes.ok || !verifyData.success) {
+              throw new Error(verifyData.error || "Payment verification failed.");
+            }
+            setIsSuccess(true);
+          } catch (err) {
+            console.error("Verification error:", err);
+            setErrorMsg(
+              "Your payment went through, but we couldn't confirm it. Email hello@buzzlab.in with payment ID " +
+                response.razorpay_payment_id +
+                "."
+            );
+          } finally {
+            setIsSubmitting(false);
+          }
+        },
+        modal: {
+          ondismiss: () => {
+            setIsSubmitting(false);
+            setErrorMsg("Payment cancelled. You can try again whenever you're ready.");
+          },
+        },
+      });
+
+      rzp.on("payment.failed", (resp) => {
+        console.error("Razorpay payment.failed", resp);
+        setErrorMsg(resp.error?.description || "Payment failed. Please try a different method.");
+        setIsSubmitting(false);
+      });
+
+      rzp.open();
     } catch (err: unknown) {
       console.error("Error submitting form:", err);
-      if (err instanceof Error) {
-        setErrorMsg(err.message);
-      } else {
-        setErrorMsg("An error occurred during submission.");
-      }
-    } finally {
+      setErrorMsg(err instanceof Error ? err.message : "An error occurred during submission.");
       setIsSubmitting(false);
     }
   };
