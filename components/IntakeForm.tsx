@@ -223,15 +223,18 @@ export default function IntakeForm() {
           ✕
         </button>
         <div className="overflow-y-auto flex-1 px-6 sm:px-10 pt-10 sm:pt-12 pb-8 sm:pb-10" style={{ scrollbarWidth: "none" }}>
-          <h2 className="font-black text-[20px] sm:text-[22px] text-[#0a0a0a] dark:text-[#eeeeff] mb-1.5">
-            📋 Book Your Audit
+          <h2 className="font-black text-[20px] sm:text-[22px] text-[#0a0a0a] dark:text-[#eeeeff] mb-1">
+            📋 Book Your 1-on-1 Audit
           </h2>
+          <p className="text-[11px] sm:text-[12px] text-[#7c3aed] dark:text-[#a78bfa] mb-1 font-medium">
+            Personalized consultation · scheduled within 48 hours
+          </p>
           <p className="text-[12px] sm:text-[13px] text-[#555566] dark:text-[#8888bb] mb-5">
             {tier === "advanced"
-              ? "Advanced Audit · ₹6,999"
+              ? "Advanced Audit · ₹6,999 · includes a live strategy call"
               : tier === "basic"
-                ? "Basic Audit · ₹2,999"
-                : "Both Platforms · ₹11,999"}
+                ? "Basic Audit · ₹2,999 · personalized written audit"
+                : "Both Platforms · ₹11,999 · audit + live strategy call"}
           </p>
 
           {/* Tier selector */}
@@ -362,7 +365,7 @@ export default function IntakeForm() {
 
           {/* Status Messages */}
           {errorMsg && <p className="text-[#ff0000] dark:text-red-400 text-[12px] mb-3 text-center font-medium bg-[#ffeaea] dark:bg-red-950/30 py-2 rounded-lg">{errorMsg}</p>}
-          {isSuccess && <p className="text-[#008a00] dark:text-emerald-400 text-[12px] mb-3 text-center font-bold bg-[#e8ffe8] dark:bg-emerald-950/30 py-2 rounded-lg">Audit request submitted successfully! We will contact you soon.</p>}
+          {isSuccess && <p className="text-[#008a00] dark:text-emerald-400 text-[12px] mb-3 text-center font-bold bg-[#e8ffe8] dark:bg-emerald-950/30 py-2 px-3 rounded-lg leading-[18px]">Payment received! ✓ Confirmation in your inbox. We&apos;ll review your profile and reach out within 48 hours to schedule your 1-on-1 session.</p>}
 
           {/* Submit */}
           <button
@@ -373,8 +376,8 @@ export default function IntakeForm() {
             {isSubmitting ? "Submitting..." : isSuccess ? "Done ✓" : `Pay ${tierPrices[tier]} & Submit →`}
           </button>
 
-          <p className="text-[10px] sm:text-[11px] text-[#a6a6b8] dark:text-[#6060a0] text-center mt-4">
-            🔒 Secure Payment · Confirmation email within 10 min
+          <p className="text-[10px] sm:text-[11px] text-[#a6a6b8] dark:text-[#6060a0] text-center mt-4 leading-[16px]">
+            🔒 Secure Payment · Instant email confirmation · Live 1-on-1 session scheduled within 48 hours
           </p>
         </div>
         </div>

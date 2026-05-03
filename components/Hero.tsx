@@ -147,7 +147,7 @@ export default function Hero() {
             variants={itemSlideRightVariants}
             className="text-[#888899] dark:text-[#8888bb] text-[14px] xl:text-[15px] leading-[26px] max-w-[210px] xl:max-w-[220px]"
           >
-            Specialized in Instagram, YouTube Growth Strategy, and Content Marketing.
+            Personalized 1-on-1 audits + live strategy sessions for Instagram and YouTube creators.
           </motion.p>
           <div className="flex-1" />
           <motion.p
@@ -195,7 +195,7 @@ export default function Hero() {
               variants={itemSlideRightVariants}
               className="text-[#888899] dark:text-[#8888bb] text-[13px] leading-[22px] max-w-[220px] mb-6"
             >
-              Specialized in Instagram, YouTube Growth Strategy, and Content Marketing.
+              Personalized 1-on-1 audits + live strategy sessions for Instagram and YouTube creators.
             </motion.p>
 
             <motion.div variants={itemUpVariants} className="flex flex-col gap-3">

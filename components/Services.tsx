@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 type Platform = "instagram" | "youtube" | "both";
 
 const basicFeatures = [
+  "Personalized written audit report (manually prepared)",
   "Positioning Clarity and Niche Ownership",
   "First Impression Audit of Profile",
   "Content Pillar Architecture",
@@ -15,13 +16,13 @@ const basicFeatures = [
 ];
 
 const advancedFeatures = [
+  "1-on-1 Live Strategy Call with Sindhu (1 hour)",
   "Hook and Retention Architecture",
   "Storytelling and Personal Brand Narrative",
   "Monetisation Alignment and Funnel Architecture",
   "Competitive Benchmarking and Differentiation",
   "Strategic Trajectory and Growth Ceiling Diagnosis",
   "Brand Aesthetic and Visual Consistency",
-  "1-Hour Consulting Call",
 ];
 
 const prices: Record<Platform, { basic: string; advanced: string; advancedSub: string }> = {
@@ -46,11 +47,13 @@ export default function Services() {
         </div>
 
         <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] text-center mb-4 leading-tight">
-          We audit, analyze your page &amp; give you scale strategy
+          Personalized 1-on-1 audits — not a template.
         </h2>
-        <p className="text-[#555566] dark:text-[#8888bb] text-[14px] sm:text-[16px] leading-[26px] text-center mb-8 max-w-[560px] mx-auto">
-          We operate on our internal robust framework on analyzing whats right and
-          wrong on your instagram page and what can be better.
+        <p className="text-[#555566] dark:text-[#8888bb] text-[14px] sm:text-[16px] leading-[26px] text-center mb-8 max-w-[600px] mx-auto">
+          My team manually reviews your profile against our internal framework
+          and writes a custom audit report. The Advanced tier includes a live
+          1-hour strategy call with me — no downloadable courses, no canned
+          PDFs, no e-books.
         </p>
 
         {/* Platform Toggle */}
@@ -160,9 +163,12 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
               <p className="text-[10px] font-semibold text-[#8c8ca6] dark:text-[#6060a0] tracking-[2px] uppercase mb-2">
                 TIER 1
               </p>
-              <h3 className="font-black text-[24px] sm:text-[28px] text-[#0a0a0a] dark:text-[#eeeeff] mb-3">
+              <h3 className="font-black text-[24px] sm:text-[28px] text-[#0a0a0a] dark:text-[#eeeeff] mb-1">
                 Basic Audit
               </h3>
+              <p className="text-[12px] text-[#555566] dark:text-[#8888bb] mb-3 italic">
+                Personalized written audit, hand-prepared by my team
+              </p>
               <p className="font-black text-[38px] sm:text-[44px] text-[#002eff] tracking-[-1px] leading-none">
                 {prices[platform].basic}
               </p>
@@ -200,9 +206,12 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
               <p className="text-[10px] font-semibold text-[#9999cc] tracking-[2px] uppercase mb-2">
                 TIER 2
               </p>
-              <h3 className="font-black text-[24px] sm:text-[28px] text-white mb-3">
+              <h3 className="font-black text-[24px] sm:text-[28px] text-white mb-1">
                 Advanced Audit
               </h3>
+              <p className="text-[12px] text-[#b2b2cc] mb-3 italic">
+                Audit + 1-hour live strategy call with Sindhu
+              </p>
               <p className="font-black text-[38px] sm:text-[44px] tracking-[-1px] leading-none bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent">
                 {prices[platform].advanced}
               </p>
