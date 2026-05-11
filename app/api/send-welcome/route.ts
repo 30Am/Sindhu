@@ -24,14 +24,15 @@ export async function POST(request: Request) {
 
     const from = process.env.EMAIL_FROM || "Sindhu's Audit <onboarding@resend.dev>";
     const replyTo = process.env.EMAIL_REPLY_TO || undefined;
+    const formUrl = process.env.INTAKE_FORM_URL || "https://forms.gle/mdGAECCRDdENgjHJA";
 
     // Using the official SDK and React Email
     const { data, error } = await resend.emails.send({
       from,
       to: [email],
       replyTo,
-      subject: "Welcome to Sindhu's Audit!",
-      react: React.createElement(WelcomeEmail, { name }),
+      subject: "Next step: fill out your audit intake form",
+      react: React.createElement(WelcomeEmail, { name, formUrl }),
     });
 
     if (error) {
