@@ -66,6 +66,13 @@ export default function Hero() {
   return (
     <section className="relative bg-white dark:bg-[#07070e] pt-[68px]">
 
+      {/* SEO h1: visually hidden but read by search engines & screen readers.
+          The styled "BREAKDOWN / BY SINDHU / GROWTH AUDITOR" wordmark below is
+          decorative, so we keep one true h1 with the searchable name + tagline. */}
+      <h1 className="sr-only">
+        Sindhu Biswal — Growth Auditor & Creator Coach for Instagram and YouTube
+      </h1>
+
       {/* ── DESKTOP layout (lg+) ── */}
       <motion.div
         variants={containerVariants}
@@ -131,7 +138,7 @@ export default function Hero() {
           >
             <Image
               src={HERO_PHOTO}
-              alt="Sindhu Biswal"
+              alt="Sindhu Biswal — Growth Auditor and creator coach"
               fill
               className="object-cover object-bottom"
               priority
@@ -221,7 +228,7 @@ export default function Hero() {
             <motion.div variants={photoVariants} className="relative w-full aspect-[3/4] rounded-[20px] overflow-hidden shadow-[0_16px_48px_rgba(0,46,255,0.15)]">
               <Image
                 src={HERO_PHOTO}
-                alt="Sindhu Biswal"
+                alt="Sindhu Biswal — Growth Auditor and creator coach"
                 fill
                 className="object-cover object-top"
                 priority
@@ -281,7 +288,7 @@ export default function Hero() {
           <div className="relative w-full h-full rounded-[32px] overflow-hidden shadow-[0_24px_80px_rgba(124,58,237,0.25)] dark:shadow-[0_24px_80px_rgba(124,58,237,0.4)] bg-[#dadae4] dark:bg-[#1a1a2e] ring-1 ring-black/5 dark:ring-white/10">
             <Image
               src={HERO_PHOTO}
-              alt="Sindhu Biswal"
+              alt="Sindhu Biswal — Growth Auditor and creator coach"
               fill
               className="object-cover object-bottom"
               priority
