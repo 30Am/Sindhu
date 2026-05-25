@@ -169,9 +169,20 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
               <p className="text-[12px] text-[#555566] dark:text-[#8888bb] mb-3 italic">
                 Personalized written audit, hand-prepared by my team
               </p>
-              <p className="font-black text-[38px] sm:text-[44px] text-[#002eff] tracking-[-1px] leading-none">
-                {prices[platform].basic}
-              </p>
+              <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-1 rounded-full bg-gradient-to-r from-[#fef3c7] to-[#fde68a] dark:from-[#3a2a08] dark:to-[#4a3510] border border-[#f59e0b]/30">
+                <span className="text-[10px]">⏳</span>
+                <span className="text-[10px] font-semibold text-[#92400e] dark:text-[#fbbf24] tracking-[1px] uppercase">
+                  Limited Time Pricing
+                </span>
+              </div>
+              <div className="flex items-baseline gap-3 flex-wrap">
+                <p className="font-black text-[38px] sm:text-[44px] text-[#002eff] tracking-[-1px] leading-none">
+                  {prices[platform].basic}
+                </p>
+                <p className="text-[20px] sm:text-[22px] font-semibold text-[#8c8ca6] dark:text-[#6060a0] line-through leading-none">
+                  ₹9,999
+                </p>
+              </div>
               <p className="text-[13px] text-[#555566] dark:text-[#8888bb] mt-2 mb-5">per platform</p>
               <div className="border-t border-[#e8e8f0] dark:border-[#242440] mb-5" />
               <ul className="space-y-3">
@@ -212,9 +223,20 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
               <p className="text-[12px] text-[#b2b2cc] mb-3 italic">
                 Audit + 1-hour live strategy call with Sindhu
               </p>
-              <p className="font-black text-[38px] sm:text-[44px] tracking-[-1px] leading-none bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent">
-                {prices[platform].advanced}
-              </p>
+              <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-1 rounded-full bg-gradient-to-r from-[#fef3c7] to-[#fde68a] border border-[#f59e0b]/40">
+                <span className="text-[10px]">⏳</span>
+                <span className="text-[10px] font-semibold text-[#92400e] tracking-[1px] uppercase">
+                  Limited Time Pricing
+                </span>
+              </div>
+              <div className="flex items-baseline gap-3 flex-wrap">
+                <p className="font-black text-[38px] sm:text-[44px] tracking-[-1px] leading-none bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent">
+                  {prices[platform].advanced}
+                </p>
+                <p className="text-[20px] sm:text-[22px] font-semibold text-[#6060a0] line-through leading-none">
+                  ₹19,999
+                </p>
+              </div>
               <p className="text-[13px] text-[#b2b2cc] mt-2 mb-5">
                 {prices[platform].advancedSub}
                 {platform !== "both" && " · ₹11,999 for both"}
