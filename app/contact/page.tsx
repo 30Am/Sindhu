@@ -3,7 +3,7 @@ import Link from "next/link";
 import LegalPage from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Contact — Sindhu Biswal",
+  title: "Contact | Sindhu Biswal",
   description:
     "Get in touch with Sindhu Biswal for questions about growth audits, refunds, partnerships, or anything else.",
 };
@@ -18,7 +18,7 @@ export default function ContactPage() {
 
       <h2>Email us</h2>
       <p>
-        For all enquiries — booking questions, refund requests, partnership opportunities, or media:
+        For all enquiries (booking questions, refund requests, partnership opportunities, or media):
         <br />
         <a href="mailto:marketing@trythegrowthproject.com">marketing@trythegrowthproject.com</a>
       </p>
@@ -29,9 +29,9 @@ export default function ContactPage() {
 
       <h2>Find us online</h2>
       <ul>
-        <li><a href="https://www.linkedin.com/in/sindhubiswal/" target="_blank" rel="noopener noreferrer">LinkedIn — Sindhu Biswal</a></li>
-        <li><a href="https://www.instagram.com/sindhu.biswal/" target="_blank" rel="noopener noreferrer">Instagram — @sindhu.biswal</a></li>
-        <li><a href="https://topmate.io/sindhubiswal" target="_blank" rel="noopener noreferrer">Topmate — Book a 1:1 call</a></li>
+        <li><a href="https://www.linkedin.com/in/sindhubiswal/" target="_blank" rel="noopener noreferrer">LinkedIn: Sindhu Biswal</a></li>
+        <li><a href="https://www.instagram.com/sindhu.biswal/" target="_blank" rel="noopener noreferrer">Instagram: @sindhu.biswal</a></li>
+        <li><a href="https://topmate.io/sindhubiswal" target="_blank" rel="noopener noreferrer">Topmate: Book a 1:1 call</a></li>
       </ul>
 
       <h2>Business details</h2>

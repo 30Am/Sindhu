@@ -65,7 +65,7 @@ export default function AuditSamplePreview() {
           See how an audit report looks like
         </h2>
         <p className="text-[#555566] dark:text-[#8888bb] text-[14px] sm:text-[16px] leading-[26px] text-center mb-10 max-w-[640px] mx-auto">
-          Flip through a real audit deck — frame-by-frame analysis, not a templated PDF. Tap any page to view it full-size.
+          Flip through a real audit deck, frame-by-frame analysis, not a templated PDF. Tap any page to view it full-size.
         </p>
 
         {/* Carousel */}

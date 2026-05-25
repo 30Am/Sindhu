@@ -23,7 +23,7 @@ export const WelcomeEmail = ({ name, formUrl }: WelcomeEmailProps) => {
   return (
     <Html>
       <Head />
-      <Preview>Thanks for signing up — one last step before your audit begins.</Preview>
+      <Preview>Thanks for signing up. One last step before your audit begins.</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={headerSection}>
@@ -35,7 +35,7 @@ export const WelcomeEmail = ({ name, formUrl }: WelcomeEmailProps) => {
             <Text style={text}>Hi {name || "there"},</Text>
             <Text style={text}>
               Your payment has gone through and your audit slot is reserved. Before my team can begin, I need a few
-              specific details about your account, your goals, and what&apos;s not working right now — this is how we
+              specific details about your account, your goals, and what&apos;s not working right now. This is how we
               tailor the audit to your situation instead of handing you a templated review.
             </Text>
 

@@ -1,15 +1,28 @@
 import { NextResponse } from "next/server";
 import Razorpay from "razorpay";
-import { CURRENCY, TIER_PRICE_PAISE, isValidTier } from "@/lib/pricing";
+import {
+  CURRENCY,
+  getPricePaise,
+  isValidPlatform,
+  isValidTier,
+  toTierKey,
+} from "@/lib/pricing";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { tier } = body as { tier?: unknown };
+    const { platform, tier } = body as { platform?: unknown; tier?: unknown };
+
+    if (!isValidPlatform(platform)) {
+      return NextResponse.json(
+        { error: "Invalid platform. Must be one of: instagram, youtube, both." },
+        { status: 400 }
+      );
+    }
 
     if (!isValidTier(tier)) {
       return NextResponse.json(
-        { error: "Invalid tier. Must be one of: basic, advanced, both." },
+        { error: "Invalid tier. Must be one of: basic, advanced." },
         { status: 400 }
       );
     }
@@ -27,15 +40,16 @@ export async function POST(request: Request) {
 
     const razorpay = new Razorpay({ key_id: keyId, key_secret: keySecret });
 
-    // Amount is computed server-side from the tier — the browser cannot tamper with it.
-    const amountInPaise = TIER_PRICE_PAISE[tier];
+    // Amount is computed server-side from (platform, tier); the browser cannot tamper with it.
+    const amountInPaise = getPricePaise(platform, tier);
+    const tierKey = toTierKey(platform, tier);
 
     const order = await razorpay.orders.create({
       amount: amountInPaise,
       currency: CURRENCY,
       // receipt is a free-text label up to 40 chars, used by Razorpay for your own reference
-      receipt: `audit_${tier}_${Date.now()}`,
-      notes: { tier },
+      receipt: `audit_${tierKey}_${Date.now()}`.slice(0, 40),
+      notes: { platform, tier },
     });
 
     // Return only what the browser needs to open Razorpay Checkout.

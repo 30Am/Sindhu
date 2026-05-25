@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sindhu Biswal — Growth Auditor",
+  title: "Sindhu Biswal | Growth Auditor",
   description:
     "Specialized in Instagram, YouTube Growth Strategy, and Content Marketing. Get your personalized growth audit today.",
 };

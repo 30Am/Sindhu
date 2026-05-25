@@ -40,10 +40,10 @@ export default function ComparisonTable() {
               Feature
             </span>
             <span className="text-white text-[11px] sm:text-[13px] font-bold text-center">
-              Basic ₹2,999
+              Basic ₹3,999
             </span>
             <span className="text-[#b2b2f2] text-[11px] sm:text-[13px] font-bold text-center px-2">
-              Advanced ₹6,999+
+              Advanced ₹7,999+
             </span>
           </div>
 
@@ -64,14 +64,14 @@ export default function ComparisonTable() {
                 {row.basic ? (
                   <span className="text-[#1ab24d]">✓</span>
                 ) : (
-                  <span className="text-[#d0d0e0] dark:text-[#3a3a5a]">—</span>
+                  <span className="text-[#d0d0e0] dark:text-[#3a3a5a]">–</span>
                 )}
               </span>
               <span className="text-center font-bold text-[14px]">
                 {row.advanced ? (
                   <span className="text-[#002eff]">✓</span>
                 ) : (
-                  <span className="text-[#d0d0e0] dark:text-[#3a3a5a]">—</span>
+                  <span className="text-[#d0d0e0] dark:text-[#3a3a5a]">–</span>
                 )}
               </span>
             </div>
@@ -81,10 +81,10 @@ export default function ComparisonTable() {
         {/* Price callout below table */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
           <span className="text-[13px] text-[#555566] dark:text-[#8888bb]">Basic starts at</span>
-          <span className="font-black text-[20px] text-[#002eff]">₹2,999</span>
+          <span className="font-black text-[20px] text-[#002eff]">₹3,999</span>
           <span className="text-[13px] text-[#555566] dark:text-[#8888bb] hidden sm:inline">·</span>
           <span className="text-[13px] text-[#555566] dark:text-[#8888bb]">Advanced starts at</span>
-          <span className="font-black text-[20px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent">₹6,999</span>
+          <span className="font-black text-[20px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent">₹7,999</span>
         </div>
       </div>
     </section>

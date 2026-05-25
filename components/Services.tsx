@@ -25,10 +25,10 @@ const advancedFeatures = [
   "Brand Aesthetic and Visual Consistency",
 ];
 
-const prices: Record<Platform, { basic: string; advanced: string; advancedSub: string }> = {
-  instagram: { basic: "₹2,999", advanced: "₹6,999", advancedSub: "per platform" },
-  youtube:   { basic: "₹2,999", advanced: "₹6,999", advancedSub: "per platform" },
-  both:      { basic: "₹5,999", advanced: "₹11,999", advancedSub: "both platforms" },
+const prices: Record<Platform, { basic: string; basicOriginal: string; advanced: string; advancedOriginal: string; advancedSub: string }> = {
+  instagram: { basic: "₹3,999",  basicOriginal: "₹4,999",  advanced: "₹7,999",  advancedOriginal: "₹9,999",  advancedSub: "per platform" },
+  youtube:   { basic: "₹5,999",  basicOriginal: "₹7,999",  advanced: "₹9,999",  advancedOriginal: "₹12,999", advancedSub: "per platform" },
+  both:      { basic: "₹10,999", basicOriginal: "₹13,999", advanced: "₹15,999", advancedOriginal: "₹19,999", advancedSub: "both platforms" },
 };
 
 export default function Services() {
@@ -47,12 +47,12 @@ export default function Services() {
         </div>
 
         <h2 className="font-black text-[28px] sm:text-[36px] lg:text-[48px] tracking-[-1px] text-[#0a0a0a] dark:text-[#eeeeff] text-center mb-4 leading-tight">
-          Personalized 1-on-1 audits — not a template.
+          Personalized 1-on-1 audits, not a template.
         </h2>
         <p className="text-[#555566] dark:text-[#8888bb] text-[14px] sm:text-[16px] leading-[26px] text-center mb-8 max-w-[600px] mx-auto">
           My team manually reviews your profile against our internal framework
           and writes a custom audit report. The Advanced tier includes a live
-          1-hour strategy call with me — no downloadable courses, no canned
+          1-hour strategy call with me. No downloadable courses, no canned
           PDFs, no e-books.
         </p>
 
@@ -125,7 +125,7 @@ export default function Services() {
 }
 
 function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
-  prices: Record<string, { basic: string; advanced: string; advancedSub: string }>;
+  prices: Record<string, { basic: string; basicOriginal: string; advanced: string; advancedOriginal: string; advancedSub: string }>;
   platform: string;
   basicFeatures: string[];
   advancedFeatures: string[];
@@ -180,7 +180,7 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
                   {prices[platform].basic}
                 </p>
                 <p className="text-[20px] sm:text-[22px] font-semibold text-[#8c8ca6] dark:text-[#6060a0] line-through leading-none">
-                  ₹9,999
+                  {prices[platform].basicOriginal}
                 </p>
               </div>
               <p className="text-[13px] text-[#555566] dark:text-[#8888bb] mt-2 mb-5">per platform</p>
@@ -195,7 +195,7 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
               </ul>
             </div>
             <a
-              href="#book"
+              href={`#book-${platform}-basic`}
               className="mt-7 flex items-center justify-center w-full h-12 rounded-full border-[1.5px] border-[#002eff] text-[#002eff] text-[14px] font-semibold relative overflow-hidden group transition-all duration-300 hover:text-white hover:border-transparent hover:shadow-[0px_4px_20px_0px_rgba(0,46,255,0.4)] active:text-white active:border-transparent active:scale-95"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-[#002eff] to-[#7c3aed] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300" />
@@ -234,12 +234,12 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
                   {prices[platform].advanced}
                 </p>
                 <p className="text-[20px] sm:text-[22px] font-semibold text-[#6060a0] line-through leading-none">
-                  ₹19,999
+                  {prices[platform].advancedOriginal}
                 </p>
               </div>
               <p className="text-[13px] text-[#b2b2cc] mt-2 mb-5">
                 {prices[platform].advancedSub}
-                {platform !== "both" && " · ₹11,999 for both"}
+                {platform !== "both" && " · ₹15,999 for both"}
               </p>
               <div className="border-t border-[#33334d] mb-5" />
               <ul className="space-y-3">
@@ -252,7 +252,7 @@ function CardsSection({ prices, platform, basicFeatures, advancedFeatures }: {
               </ul>
             </div>
             <a
-              href="#book"
+              href={`#book-${platform}-advanced`}
               className="mt-7 flex items-center justify-center w-full h-12 rounded-full bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[14px] font-semibold relative overflow-hidden group transition-all duration-300 hover:shadow-[0px_6px_24px_0px_rgba(124,58,237,0.5)] active:shadow-[0px_6px_24px_0px_rgba(124,58,237,0.5)] active:scale-95"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-[#7c3aed] to-[#002eff] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500" />

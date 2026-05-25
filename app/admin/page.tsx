@@ -128,10 +128,10 @@ export default async function AdminDashboard() {
                       </span>
                     </td>
                     <td className="px-6 py-5 capitalize font-semibold text-[#0a0a0a] text-[13px]">
-                      {audit.goal?.replace("-", " ") ?? "—"}
+                      {audit.goal?.replace("-", " ") ?? "-"}
                     </td>
                     <td className="px-6 py-5 max-w-[280px] truncate text-[#555566] text-[13px]" title={audit.challenges}>
-                      {audit.challenges || "—"}
+                      {audit.challenges || "-"}
                     </td>
                   </tr>
                 ))}
@@ -189,7 +189,7 @@ export default async function AdminDashboard() {
                           Visit ↗
                         </a>
                       ) : (
-                        <span className="text-[#c0c0d0] text-[12px]">—</span>
+                        <span className="text-[#c0c0d0] text-[12px]">-</span>
                       )}
                     </td>
                     <td className="px-6 py-5">
@@ -198,14 +198,14 @@ export default async function AdminDashboard() {
                       </span>
                     </td>
                     <td className="px-6 py-5 max-w-[320px] truncate text-[#555566] text-[13px]" title={row.request}>
-                      {row.request || "—"}
+                      {row.request || "-"}
                     </td>
                     <td className="px-6 py-5 text-[#9999a6] text-[12px]">
                       {row.created_at
                         ? new Date(row.created_at).toLocaleDateString("en-IN", {
                             day: "numeric", month: "short", year: "numeric",
                           })
-                        : "—"}
+                        : "-"}
                     </td>
                   </tr>
                 ))}

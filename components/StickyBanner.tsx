@@ -42,9 +42,6 @@ export default function StickyBanner() {
     >
       <div className="bg-[#0a0a0a]/85 backdrop-blur-xl border-t border-[rgba(255,255,255,0.08)] py-3 sm:py-4 px-4 sm:px-6 shadow-[0_-12px_40px_rgba(0,0,0,0.3)]">
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-6">
-          <p className="hidden sm:block text-white/90 text-[15px] font-medium tracking-wide">
-            Ready to expand your digital presence?
-          </p>
           <a
             href="#book"
             onClick={(e) => {

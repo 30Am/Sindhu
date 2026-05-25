@@ -222,7 +222,7 @@ export default function CustomRequest() {
               How much are you ready to invest?
             </label>
 
-            {/* Budget pill — typeable */}
+            {/* Budget pill, typeable */}
             <div className="flex justify-center mb-5">
               <div className={`inline-flex flex-col items-center bg-gradient-to-br from-[#f0f2ff] dark:from-[#141428] to-[#f5f0ff] dark:to-[#1a1030] border rounded-2xl px-8 py-3 transition-all duration-200 ${isBudgetFocused ? "border-[#7c3aed] shadow-[0_0_0_3px_rgba(124,58,237,0.15)]" : "border-[#e0e0f5] dark:border-[#242440]"}`}>
                 <div className="flex items-center">

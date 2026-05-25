@@ -1,9 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import {
+  PRICING,
+  PLATFORM_LABELS,
+  type Platform,
+  type Tier,
+} from "@/lib/pricing";
 
-type Tier = "basic" | "advanced" | "both";
 type Goal = "followers" | "engagement" | "monetize" | "brand-deals";
+
+const PLATFORM_PLACEHOLDER: Record<Platform, string> = {
+  instagram: "https://instagram.com/yourhandle",
+  youtube: "https://youtube.com/@yourchannel",
+  both: "https://instagram.com/yourhandle (or both, comma-separated)",
+};
+
+const formatInr = (n: number) =>
+  `₹${n.toLocaleString("en-IN")}`;
 
 interface RazorpayResponse {
   razorpay_order_id: string;
@@ -51,6 +65,7 @@ function loadRazorpayScript(): Promise<boolean> {
 
 export default function IntakeForm() {
   const [isOpen, setIsOpen] = useState(false);
+  const [platform, setPlatform] = useState<Platform>("both");
   const [tier, setTier] = useState<Tier>("advanced");
   const [goal, setGoal] = useState<Goal>("followers");
   const [name, setName] = useState("");
@@ -62,16 +77,14 @@ export default function IntakeForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const tierPrices: Record<Tier, string> = {
-    basic: "₹2,999",
-    advanced: "₹6,999",
-    both: "₹11,999",
-  };
-  const tierLabels: Record<Tier, string> = {
-    basic: "Basic · ₹2,999",
-    advanced: "Advanced · ₹6,999",
-    both: "Both · ₹11,999",
-  };
+  const priceInr = PRICING[platform][tier];
+  const priceStr = formatInr(priceInr);
+  const platformLabel = PLATFORM_LABELS[platform];
+  const tierTitle = tier === "advanced" ? "Advanced Audit" : "Basic Audit";
+  const tierBlurb =
+    tier === "advanced"
+      ? "Audit + 1-hour live strategy call with Sindhu"
+      : "Personalized written audit, hand-prepared by my team";
 
   const handleSubmit = async () => {
     if (!name || !email || !url) {
@@ -94,7 +107,7 @@ export default function IntakeForm() {
       const orderRes = await fetch("/api/razorpay/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tier }),
+        body: JSON.stringify({ platform, tier }),
       });
 
       const orderData = await orderRes.json();
@@ -108,12 +121,7 @@ export default function IntakeForm() {
         amount: orderData.amount,
         currency: orderData.currency,
         name: "Sindhu Biswal",
-        description:
-          tier === "advanced"
-            ? "Advanced Audit"
-            : tier === "basic"
-              ? "Basic Audit"
-              : "Both Platforms Audit",
+        description: `${platformLabel} · ${tierTitle}`,
         order_id: orderData.orderId,
         prefill: { name, email },
         theme: { color: "#002eff" },
@@ -131,6 +139,7 @@ export default function IntakeForm() {
                 name,
                 email,
                 profile_url: url,
+                platform,
                 tier,
                 goal,
                 challenges,
@@ -182,7 +191,23 @@ export default function IntakeForm() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      setIsOpen(window.location.hash === "#book" || window.location.hash.includes("#book"));
+      const hash = window.location.hash;
+      const isBook = hash === "#book" || hash.startsWith("#book-") || hash.includes("#book");
+      setIsOpen(isBook);
+
+      // Parse "#book-{platform}-{tier}" to pre-select what the user clicked on.
+      // Accept any subset: "#book", "#book-instagram", "#book-instagram-advanced".
+      if (isBook) {
+        const parts = hash.replace(/^#/, "").split("-"); // ["book", "instagram", "advanced"]
+        const p = parts[1];
+        const t = parts[2];
+        if (p === "instagram" || p === "youtube" || p === "both") {
+          setPlatform(p);
+        }
+        if (t === "basic" || t === "advanced") {
+          setTier(t);
+        }
+      }
     };
     handleHashChange();
     window.addEventListener("hashchange", handleHashChange);
@@ -224,22 +249,41 @@ export default function IntakeForm() {
         </button>
         <div className="overflow-y-auto flex-1 px-6 sm:px-10 pt-10 sm:pt-12 pb-8 sm:pb-10" style={{ scrollbarWidth: "none" }}>
           <h2 className="font-black text-[20px] sm:text-[22px] text-[#0a0a0a] dark:text-[#eeeeff] mb-1">
-            📋 Book Your 1-on-1 Audit
+            📋 Book Your {platformLabel} Audit
           </h2>
           <p className="text-[11px] sm:text-[12px] text-[#7c3aed] dark:text-[#a78bfa] mb-1 font-medium">
             Personalized consultation · scheduled within 48 hours
           </p>
           <p className="text-[12px] sm:text-[13px] text-[#555566] dark:text-[#8888bb] mb-5">
-            {tier === "advanced"
-              ? "Advanced Audit · ₹6,999 · includes a live strategy call"
-              : tier === "basic"
-                ? "Basic Audit · ₹2,999 · personalized written audit"
-                : "Both Platforms · ₹11,999 · audit + live strategy call"}
+            {tierTitle} · {priceStr} · {tierBlurb}
           </p>
 
-          {/* Tier selector */}
+          {/* Platform selector */}
+          <label className="block text-[9px] font-semibold text-[#9999a6] dark:text-[#6060a0] tracking-[1.5px] uppercase mb-1.5">
+            PLATFORM
+          </label>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {(["instagram", "youtube", "both"] as Platform[]).map((p) => (
+              <button
+                key={p}
+                onClick={() => setPlatform(p)}
+                className={`h-8 px-3 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${
+                  platform === p
+                    ? "bg-[#0a0a0a] dark:bg-gradient-to-r dark:from-[#002eff] dark:to-[#7c3aed] text-white"
+                    : "bg-[#f5f5fc] dark:bg-[#1a1a2e] border border-[#e8e8f0] dark:border-[#242440] text-[#555566] dark:text-[#8888bb] hover:border-[#002eff]"
+                }`}
+              >
+                {PLATFORM_LABELS[p]}
+              </button>
+            ))}
+          </div>
+
+          {/* Tier selector (prices depend on selected platform) */}
+          <label className="block text-[9px] font-semibold text-[#9999a6] dark:text-[#6060a0] tracking-[1.5px] uppercase mb-1.5">
+            TIER
+          </label>
           <div className="flex flex-wrap gap-2 mb-6">
-            {(["basic", "advanced", "both"] as Tier[]).map((t) => (
+            {(["basic", "advanced"] as Tier[]).map((t) => (
               <button
                 key={t}
                 onClick={() => setTier(t)}
@@ -249,7 +293,7 @@ export default function IntakeForm() {
                     : "bg-[#f5f5fc] dark:bg-[#1a1a2e] border border-[#e8e8f0] dark:border-[#242440] text-[#555566] dark:text-[#8888bb] hover:border-[#002eff]"
                 }`}
               >
-                {tierLabels[t]}
+                {t === "basic" ? "Basic" : "Advanced"} · {formatInr(PRICING[platform][t])}
               </button>
             ))}
           </div>
@@ -291,7 +335,7 @@ export default function IntakeForm() {
               type="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://instagram.com/yourhandle"
+              placeholder={PLATFORM_PLACEHOLDER[platform]}
               className="w-full h-10 bg-[#f7f7fc] dark:bg-[#141428] border border-[#e8e8f0] dark:border-[#242440] rounded-xl px-3 text-[13px] text-[#0a0a0a] dark:text-[#eeeeff] placeholder:text-[#b0b0c0] dark:placeholder:text-[#4a4a6a] focus:outline-none focus:border-[#002eff]"
             />
           </div>
@@ -344,10 +388,10 @@ export default function IntakeForm() {
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div>
                 <p className="text-[11px] text-[#555566] dark:text-[#8888bb]">
-                  {tier === "advanced" ? "Advanced Audit" : tier === "basic" ? "Basic Audit" : "Both Platforms"}
+                  {platformLabel} · {tierTitle}
                 </p>
                 <p className="font-black text-[26px] sm:text-[28px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] bg-clip-text text-transparent leading-none mt-0.5">
-                  {tierPrices[tier]}
+                  {priceStr}
                 </p>
               </div>
               <div className="flex gap-2">
@@ -373,7 +417,7 @@ export default function IntakeForm() {
             disabled={isSubmitting || isSuccess}
             className="w-full h-12 sm:h-[52px] bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[14px] sm:text-[15px] font-bold rounded-full hover:opacity-90 transition-opacity cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? "Submitting..." : isSuccess ? "Done ✓" : `Pay ${tierPrices[tier]} & Submit →`}
+            {isSubmitting ? "Submitting..." : isSuccess ? "Done ✓" : `Pay ${priceStr} & Submit →`}
           </button>
 
           <p className="text-[10px] sm:text-[11px] text-[#a6a6b8] dark:text-[#6060a0] text-center mt-4 leading-[16px]">

@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase";
-import { CURRENCY, TIER_PRICE_INR, type Tier, isValidTier } from "@/lib/pricing";
+import {
+  CURRENCY,
+  getPriceInr,
+  isValidPlatform,
+  isValidTier,
+  toTierKey,
+} from "@/lib/pricing";
 
 interface VerifyBody {
   // From Razorpay Checkout
@@ -13,6 +19,7 @@ interface VerifyBody {
   name: string;
   email: string;
   profile_url: string;
+  platform: string;
   tier: string;
   goal: string;
   challenges?: string;
@@ -29,6 +36,7 @@ export async function POST(request: Request) {
       name,
       email,
       profile_url,
+      platform,
       tier,
       goal,
       challenges,
@@ -42,12 +50,16 @@ export async function POST(request: Request) {
       !name ||
       !email ||
       !profile_url ||
+      !platform ||
       !tier ||
       !goal
     ) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
     }
 
+    if (!isValidPlatform(platform)) {
+      return NextResponse.json({ error: "Invalid platform." }, { status: 400 });
+    }
     if (!isValidTier(tier)) {
       return NextResponse.json({ error: "Invalid tier." }, { status: 400 });
     }
@@ -79,7 +91,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid payment signature." }, { status: 400 });
     }
 
-    const amountInr = TIER_PRICE_INR[tier];
+    const amountInr = getPriceInr(platform, tier);
+    const tierKey = toTierKey(platform, tier);
 
     // 3. Signature is valid → ALWAYS fire the welcome email.
     //    The customer paid; they deserve confirmation regardless of whether
@@ -105,7 +118,7 @@ export async function POST(request: Request) {
           name,
           email,
           profile_url,
-          tier,
+          tier: tierKey,
           goal,
           challenges: challenges ?? "",
           razorpay_order_id,
@@ -131,7 +144,7 @@ export async function POST(request: Request) {
         name,
         email,
         profile_url,
-        tier,
+        tier: tierKey,
         goal,
         challenges,
         amountInr,
@@ -163,7 +176,7 @@ interface AdminAlertData {
   name: string;
   email: string;
   profile_url: string;
-  tier: Tier;
+  tier: string;
   goal: string;
   challenges?: string;
   amountInr: number;
@@ -195,7 +208,7 @@ function sendAdminAlert(data: AdminAlertData): void {
       <tr><td><strong>Profile URL</strong></td><td>${escape(data.profile_url)}</td></tr>
       <tr><td><strong>Tier</strong></td><td>${escape(data.tier)} (₹${data.amountInr})</td></tr>
       <tr><td><strong>Goal</strong></td><td>${escape(data.goal)}</td></tr>
-      <tr><td><strong>Challenges</strong></td><td>${escape(data.challenges ?? "—")}</td></tr>
+      <tr><td><strong>Challenges</strong></td><td>${escape(data.challenges ?? "-")}</td></tr>
     </table>
 
     <h3>Razorpay payment</h3>
@@ -219,7 +232,7 @@ function sendAdminAlert(data: AdminAlertData): void {
     .send({
       from,
       to: [adminEmail],
-      subject: `⚠️ Audit booking DB save failed — reconcile ${data.razorpay_payment_id}`,
+      subject: `⚠️ Audit booking DB save failed: reconcile ${data.razorpay_payment_id}`,
       html,
     })
     .catch((e) => console.error("Admin alert email failed:", e));

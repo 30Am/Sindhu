@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Sindhu Biswal",
+  title: "Terms & Conditions | Sindhu Biswal",
   description:
     "Terms and conditions governing the use of Sindhu Biswal growth audit services and the www.sindhubiswal.com website.",
 };
@@ -20,9 +20,9 @@ export default function TermsAndConditions() {
       <h2>1. Services offered</h2>
       <p>We provide personalised growth audits and strategy consultations for Instagram and YouTube creators, including:</p>
       <ul>
-        <li><strong>Basic Audit</strong> — ₹2,999 (single platform, foundational review).</li>
-        <li><strong>Advanced Audit</strong> — ₹6,999 (single platform, deep-dive analysis with action plan).</li>
-        <li><strong>Both Platforms</strong> — ₹11,999 (Instagram + YouTube combined audit).</li>
+        <li><strong>Basic Audit</strong>: ₹3,999 (single platform, foundational review).</li>
+        <li><strong>Advanced Audit</strong>: ₹7,999 (single platform, deep-dive analysis with action plan).</li>
+        <li><strong>Both Platforms</strong>: ₹15,999 (Instagram + YouTube combined audit).</li>
       </ul>
       <p>
         Pricing is in Indian Rupees (INR) and inclusive of applicable taxes unless stated otherwise. We reserve the

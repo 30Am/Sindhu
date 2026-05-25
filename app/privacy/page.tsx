@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Sindhu Biswal",
+  title: "Privacy Policy | Sindhu Biswal",
   description:
     "How Sindhu Biswal collects, uses, stores, and protects your personal information when you book a growth audit.",
 };
@@ -42,11 +42,11 @@ export default function PrivacyPolicy() {
       <h2>3. Third-party services we use</h2>
       <p>To deliver this service we share the minimum necessary information with these processors:</p>
       <ul>
-        <li><strong>Supabase</strong> — secure storage of audit booking data.</li>
-        <li><strong>Resend</strong> — sending transactional emails (e.g. your welcome email).</li>
-        <li><strong>Razorpay</strong> — payment processing. Razorpay&apos;s privacy policy applies to all payment data.</li>
-        <li><strong>Google Analytics</strong> — anonymous traffic and behaviour analytics. You can opt out using a browser extension or by enabling &quot;Do Not Track&quot;.</li>
-        <li><strong>Vercel</strong> — website hosting infrastructure.</li>
+        <li><strong>Supabase</strong>: secure storage of audit booking data.</li>
+        <li><strong>Resend</strong>: sending transactional emails (e.g. your welcome email).</li>
+        <li><strong>Razorpay</strong>: payment processing. Razorpay&apos;s privacy policy applies to all payment data.</li>
+        <li><strong>Google Analytics</strong>: anonymous traffic and behaviour analytics. You can opt out using a browser extension or by enabling &quot;Do Not Track&quot;.</li>
+        <li><strong>Vercel</strong>: website hosting infrastructure.</li>
       </ul>
 
       <h2>4. How long we keep your data</h2>

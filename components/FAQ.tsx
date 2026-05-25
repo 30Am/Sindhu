@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: "Will Sindhu personally do the audit?",
-    a: "Yes — every audit is personally conducted by Sindhu Biswal. No outsourcing, no templates. You get her direct expertise and strategic insights.",
+    a: "Yes, every audit is personally conducted by Sindhu Biswal. No outsourcing, no templates. You get her direct expertise and strategic insights.",
   },
   {
     q: "What's the difference between Basic and Advanced?",
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "Can I audit both Instagram and YouTube?",
-    a: "Absolutely! Choose the 'Both Platforms' option for ₹11,999 on the Advanced tier and get a comprehensive cross-platform growth strategy.",
+    a: "Absolutely! Choose the 'Both Platforms' option for ₹15,999 on the Advanced tier and get a comprehensive cross-platform growth strategy.",
   },
   {
     q: "Is this suitable for small accounts?",
