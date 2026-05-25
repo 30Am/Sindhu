@@ -4,6 +4,7 @@ import TrustBar from "@/components/TrustBar";
 import AnimatedStats from "@/components/AnimatedStats";
 import About from "@/components/About";
 import Services from "@/components/Services";
+import AuditSamplePreview from "@/components/AuditSamplePreview";
 import HowItWorks from "@/components/HowItWorks";
 import CustomRequest from "@/components/CustomRequest";
 import PortfolioCarousel from "@/components/PortfolioCarousel";
@@ -25,6 +26,7 @@ export default function Home() {
         <AnimatedStats />
         <PortfolioCarousel />
         <About />
+        <AuditSamplePreview />
         <Services />
         <HowItWorks />
         <CustomRequest />

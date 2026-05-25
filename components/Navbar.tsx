@@ -107,7 +107,7 @@ export default function Navbar() {
             }}
             className="hidden sm:flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[12px] sm:text-[13px] font-semibold px-4 sm:px-5 h-[38px] sm:h-[40px] rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
           >
-            Get Your Audit →
+            Audit Your Page Now →
           </Link>
           <button
             className="lg:hidden p-2 text-[#0a0a0a] dark:text-[#eeeeff] text-xl leading-none"
@@ -143,7 +143,7 @@ export default function Navbar() {
               }
             }}
           >
-            Get Your Audit →
+            Audit Your Page Now →
           </Link>
         </div>
       )}

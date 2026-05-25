@@ -91,7 +91,7 @@ export default function Hero() {
           >
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400 flex-shrink-0" />
             <span className="text-[13px] font-medium text-[#0a0a0a] dark:text-[#eeeeff] whitespace-nowrap">
-              ADVISOR/COACH OF CREATORS
+              ADVISOR/COACH OF INDIA&apos;S TOP CREATORS
             </span>
           </motion.div>
 
@@ -102,7 +102,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center justify-center bg-[#4d32ff] text-white text-[14px] font-semibold h-12 px-7 rounded-full shadow-md hover:shadow-lg transition-all"
             >
-              Get My Audit Now
+              Audit Your Page Now
             </motion.a>
             <motion.a
               href="#services"
@@ -147,7 +147,7 @@ export default function Hero() {
             variants={itemSlideRightVariants}
             className="text-[#888899] dark:text-[#8888bb] text-[14px] xl:text-[15px] leading-[26px] max-w-[210px] xl:max-w-[220px]"
           >
-            Personalized 1-on-1 audits + live strategy sessions for Instagram and YouTube creators.
+            I help creators identify issues in growth and content strategy, and design systems and frameworks to scale.
           </motion.p>
           <div className="flex-1" />
           <motion.p
@@ -187,7 +187,7 @@ export default function Hero() {
             >
               <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
               <span className="text-[12px] font-medium text-[#0a0a0a] dark:text-[#eeeeff] whitespace-nowrap">
-                ADVISOR/COACH OF CREATORS
+                ADVISOR/COACH OF INDIA&apos;S TOP CREATORS
               </span>
             </motion.div>
 
@@ -195,7 +195,7 @@ export default function Hero() {
               variants={itemSlideRightVariants}
               className="text-[#888899] dark:text-[#8888bb] text-[13px] leading-[22px] max-w-[220px] mb-6"
             >
-              Personalized 1-on-1 audits + live strategy sessions for Instagram and YouTube creators.
+              I help creators identify issues in growth and content strategy, and design systems and frameworks to scale.
             </motion.p>
 
             <motion.div variants={itemUpVariants} className="flex flex-col gap-3">
@@ -204,7 +204,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.97 }}
                 className="flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[13px] font-semibold h-12 rounded-full shadow-md"
               >
-                Get My Audit Now
+                Audit Your Page Now
               </motion.a>
               <motion.a
                 href="#services"
@@ -258,7 +258,7 @@ export default function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 animate-pulse" />
           <span className="text-[11px] font-semibold tracking-wide text-[#0a0a0a] dark:text-[#eeeeff]">
-            ADVISOR/COACH OF CREATORS
+            ADVISOR/COACH OF INDIA&apos;S TOP CREATORS
           </span>
         </motion.div>
 
@@ -305,7 +305,7 @@ export default function Hero() {
           variants={itemUpVariants}
           className="relative z-10 text-[#555566] dark:text-[#8888bb] text-[15px] leading-[24px] max-w-[300px] mb-10 font-medium"
         >
-          Specialized in Instagram, YouTube Growth Strategy, and Content Marketing.
+          I help creators identify issues in growth and content strategy, and design systems and frameworks to scale.
         </motion.p>
 
         {/* CTAs */}
@@ -319,7 +319,7 @@ export default function Hero() {
             whileTap={{ scale: 0.96 }}
             className="flex items-center justify-center bg-gradient-to-r from-[#002eff] to-[#7c3aed] text-white text-[15px] font-bold h-[56px] rounded-full shadow-[0_8px_24px_rgba(124,58,237,0.35)] hover:shadow-[0_12px_32px_rgba(124,58,237,0.5)] transition-all"
           >
-            Get My Audit Now →
+            Audit Your Page Now →
           </motion.a>
           <motion.a
             href="#services"
